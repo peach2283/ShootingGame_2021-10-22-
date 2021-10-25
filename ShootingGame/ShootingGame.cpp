@@ -1,6 +1,5 @@
 ﻿// ShootingGame.cpp : 애플리케이션에 대한 진입점을 정의합니다.
 //
-
 #include "framework.h"
 #include "ShootingGame.h"
 
@@ -8,6 +7,7 @@
 
 // 전역 변수:
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
+HWND hWnd;                                      // 현재 윈동우 핸들입니다.
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
 WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
 
@@ -28,6 +28,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     START_DEBUG_CONSOLE();              //디버그 콘솔창 시작하기
     cout<<"디버그 콘솔창 시작하기"<<endl;
 
+
     // 전역 문자열을 초기화합니다.
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_SHOOTINGGAME, szWindowClass, MAX_LOADSTRING);
@@ -41,14 +42,30 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     MSG msg;
 
+    initGraphic(hWnd, 0, 0, 480, 800);  //그래픽 초기화
+    Time::init();                       //타이머 초기화
+
     // 기본 메시지 루프입니다:
     while (GetMessage(&msg, nullptr, 0, 0))
     {
+        //윈도우 처리 함수//
         TranslateMessage(&msg);
         DispatchMessage(&msg);
+
+        //게임구동 함수//
+        clear(255, 0, 0);
+
+        Time::update();
+        ObjectManager::update();
+
+        ObjectManager::draw();
+
+        render();
     }
 
     STOP_DEBUG_CONSOLE();  //디버그 콘솔창 닫기
+    exitGraphic();         //그래픽 종료하기
+
     return (int) msg.wParam;
 }
 
@@ -77,17 +94,17 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
-   HWND hWnd = CreateWindowW(szWindowClass, 
-                             szTitle, 
-                             WS_OVERLAPPEDWINDOW,
-                             CW_USEDEFAULT, 
-                             0, 
-                             CW_USEDEFAULT, 
-                             0, 
-                             nullptr, 
-                             nullptr, 
-                             hInstance, 
-                             nullptr);
+   hWnd = CreateWindowW(szWindowClass, 
+                        szTitle, 
+                        WS_OVERLAPPEDWINDOW,
+                        CW_USEDEFAULT, 
+                        0, 
+                        CW_USEDEFAULT, 
+                        0, 
+                        nullptr, 
+                        nullptr, 
+                        hInstance, 
+                        nullptr);
 
    if (!hWnd)
    {
