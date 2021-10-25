@@ -9,3 +9,4 @@
 #include "ObjectManager.h"
 #include "Sprite.h"
 #include "Time.h"
+#include "GameBG.h"

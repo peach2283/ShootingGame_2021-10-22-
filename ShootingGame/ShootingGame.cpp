@@ -46,18 +46,27 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     Time::init();                       //타이머 초기화
 
     // 기본 메시지 루프입니다:
-    while (GetMessage(&msg, nullptr, 0, 0))
+    while (true)
     {
-        //윈도우 처리 함수//
-        TranslateMessage(&msg);
-        DispatchMessage(&msg);
+        //PeekMessage로 윈도우메세지 가져오기
+        if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE) == TRUE)
+        {
+            //윈도우 처리 함수//
+            TranslateMessage(&msg);
+            DispatchMessage(&msg);
+
+            //무한루프..종료하기
+            if (msg.message == WM_QUIT)
+            {
+                break;
+            }
+        }
 
         //게임구동 함수//
         clear(255, 0, 0);
-
         Time::update();
+        
         ObjectManager::update();
-
         ObjectManager::draw();
 
         render();
@@ -125,7 +134,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
-            // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
+
+            render();  //윈도우...출력하기
+            
             EndPaint(hWnd, &ps);
         }
         break;
