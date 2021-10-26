@@ -16,9 +16,6 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 
-#define WIDTH  480  //게임장면..가로크기
-#define HEIGHT 800  //게임장면..세로크기
-
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
                      _In_ LPWSTR    lpCmdLine,
@@ -48,7 +45,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     Time::init();                            //타이머 초기화
 
     //게임오브젝트..추가하기//
-    ObjectManager::instantiate(new GameBG(0, 0)); //게임배경 추가
+    ObjectManager::instantiate(new GameBG(0          ,          0)); //게임배경 추가
+    ObjectManager::instantiate(new Player(WIDTH/2-34 , HEIGHT-150)); //플레이어 추가
 
     // 기본 메시지 루프입니다:
     while (true)
