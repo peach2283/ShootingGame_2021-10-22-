@@ -16,6 +16,9 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 
+#define WIDTH  480  //게임장면..가로크기
+#define HEIGHT 800  //게임장면..세로크기
+
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
                      _In_ LPWSTR    lpCmdLine,
@@ -27,7 +30,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     //프로그램 초기화 코드를 추가하시오.
     START_DEBUG_CONSOLE();              //디버그 콘솔창 시작하기
     cout<<"디버그 콘솔창 시작하기"<<endl;
-
 
     // 전역 문자열을 초기화합니다.
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
@@ -42,8 +44,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     MSG msg;
 
-    initGraphic(hWnd, 0, 0, 480, 800);  //그래픽 초기화
-    Time::init();                       //타이머 초기화
+    initGraphic(hWnd, 0, 0, WIDTH, HEIGHT);  //그래픽 초기화
+    Time::init();                            //타이머 초기화
+
+    //게임오브젝트..추가하기//
+    ObjectManager::instantiate(new GameBG(0, 0)); //게임배경 추가
 
     // 기본 메시지 루프입니다:
     while (true)
@@ -74,6 +79,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     STOP_DEBUG_CONSOLE();  //디버그 콘솔창 닫기
     exitGraphic();         //그래픽 종료하기
+    ObjectManager::clear(); //매니저 목록에 추가된 객체 모두 삭제하기
 
     return (int) msg.wParam;
 }
@@ -101,15 +107,27 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
+   //윈도우 스타일 변수
+    int style = WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX;
+
+   //윈도우 크기 조정하기 : AdjustWindowRect
+   RECT rt = {0,0, WIDTH, HEIGHT};
+
+   AdjustWindowRect(&rt ,style , FALSE);
+   
+   //윈도우 가로/세롤 크기
+   int width  = rt.right  - rt.left;
+   int height = rt.bottom - rt.top;
+
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
    hWnd = CreateWindowW(szWindowClass, 
                         szTitle, 
-                        WS_OVERLAPPEDWINDOW,
+                        style,
                         CW_USEDEFAULT, 
                         0, 
-                        CW_USEDEFAULT, 
-                        0, 
+                        width, 
+                        height, 
                         nullptr, 
                         nullptr, 
                         hInstance, 
