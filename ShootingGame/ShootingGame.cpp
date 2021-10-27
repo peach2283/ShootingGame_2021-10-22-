@@ -16,9 +16,6 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 
-//키보드 상태 열거형
-enum class State {keyUpRep=0, keyDown=1, keyDownRep=2, keyUp=3};
-
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
                      _In_ LPWSTR    lpCmdLine,
@@ -51,8 +48,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ObjectManager::instantiate(new GameBG(0          ,          0)); //게임배경 추가
     ObjectManager::instantiate(new Player(WIDTH/2-34 , HEIGHT-150)); //플레이어 추가
 
-    State state = State::keyUpRep;
-
     // 기본 메시지 루프입니다:
     while (true)
     {
@@ -68,54 +63,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
             {
                 break;
             }
-        }
-
-        /////////////////////////////////////////////////
-        /////// 키입력 만들기 ////////////////////////////
-        int key = GetAsyncKeyState(VK_SPACE);
-
-        if (state == State::keyUpRep)
-        {
-            if (key != 0)  //키가 눌렸음
-            {
-                state = State::keyDown; //키가 한번눌림 상태로..전이
-            }            
-
-        }
-        else if (state == State::keyDown)
-        {
-            if (key != 0) //키가 눌렸음
-            {
-                state = State::keyDownRep; //키를 누르고 있는 상태로..전이
-            }
-            else {
-                state = State::keyUp;     //키를 한번 놓음 상태로..전이
-            }
-        
-        }
-        else if (state == State::keyDownRep)
-        {
-            if (key == 0) //키가 눌리지 않음
-            {
-                 state = State::keyUp;      //키를 한번 놓음 상태로..전이
-            }           
-        }
-        else if (state == State::keyUp)
-        {
-            if (key != 0) //키가 눌림
-            {
-                state = State::keyDown;  //키를 한번 눌림 상태로..전이
-            }
-            else {
-                state = State::keyUpRep;  //키를 계속 놓고 있음 상태로..전이
-            }
-        }
-
-
-        //키상태 검사하기//
-        if (state == State::keyUp)
-        {
-            cout << "키 놓임" << endl;
         }
 
         ////////////////////////////////////////////////
