@@ -19,7 +19,7 @@ void Player::update()
 	float dist = speed * Time::deltaTime;
 
 	//이동키 입력받기
-	if (GetAsyncKeyState(VK_UP) != 0)
+	if (Input::getKey( KeyCode::upArrow ) == true)
 	{
 		translate(0, -dist);
 
@@ -32,7 +32,7 @@ void Player::update()
 		}
 	}
 
-	if (GetAsyncKeyState(VK_DOWN) != 0)
+	if (Input::getKey( KeyCode::downArrow )==true)
 	{
 		translate(0, dist);
 
@@ -45,7 +45,7 @@ void Player::update()
 		}
 	}
 
-	if (GetAsyncKeyState(VK_LEFT) != 0)
+	if (Input::getKey( KeyCode::leftArrow )==true)
 	{
 		translate(-dist, 0);
 
@@ -58,7 +58,7 @@ void Player::update()
 		}
 	}
 
-	if (GetAsyncKeyState(VK_RIGHT) != 0)
+	if (Input::getKey( KeyCode::rightArrow )==true)
 	{
 		translate(dist, 0);
 

@@ -2,8 +2,7 @@
 #include "ShootingGame.h"
 
 State Input::state[9]    = { State::keyUpRep,State::keyUpRep,State::keyUpRep,State::keyUpRep,State::keyUpRep,State::keyUpRep,State::keyUpRep,State::keyUpRep,State::keyUpRep };
-int   Input::vKeyCode[9] = { VK_UP          , VK_DOWN , VK_LEFT       , VK_RIGHT      , VK_SPACE      , 'Z'           , VK_LBUTTON          , VK_RBUTTON      , VK_MBUTTON };
-
+int   Input::vKeyCode[9] = { VK_UP          , VK_DOWN       , VK_LEFT       , VK_RIGHT      , VK_SPACE      , 'Z'           , VK_LBUTTON          , VK_RBUTTON      , VK_MBUTTON };
 
 void Input::update()
 {
@@ -51,4 +50,37 @@ void Input::update()
         }
     }
 
+}
+
+bool Input::getKey(KeyCode keycode)
+{
+    if ( state[(int) keycode] == State::keyDownRep || state[(int)keycode]==State::keyDown )
+    {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+bool Input::getKeyDown(KeyCode keycode)
+{
+    if (state[(int) keycode] == State::keyDown)
+    {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+bool Input::getKeyUp(KeyCode keycode)
+{
+    if (state[(int)keycode] == State::keyUp)
+    {
+        return true;
+    }
+    else {
+        return false;
+    }
 }

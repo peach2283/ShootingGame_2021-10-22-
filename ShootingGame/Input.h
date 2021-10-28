@@ -2,6 +2,9 @@
 
 #include <Windows.h>
 
+//키코드 열거형
+enum class KeyCode {upArrow=0, downArrow=1, leftArrow=2, rightArrow=3, space=4, Z=5};
+
 //키보드 상태 열거형
 enum class State { keyUpRep = 0, keyDown = 1, keyDownRep = 2, keyUp = 3 };
 
@@ -14,7 +17,7 @@ private:
 public:
 	static void update();
 
-	static bool getKey(int i);
-	static bool getKeyDown(int i);
-	static bool getKeyUp(int i);
+	static bool getKey    (KeyCode keycode);
+	static bool getKeyDown(KeyCode keycode);
+	static bool getKeyUp  (KeyCode keycode);
 };

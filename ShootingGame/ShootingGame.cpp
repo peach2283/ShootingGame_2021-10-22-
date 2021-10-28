@@ -70,7 +70,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         //게임구동 함수//
         clear(255, 0, 0);
         Time::update();
-        
+        Input::update();
+
         ObjectManager::update();
         ObjectManager::draw();
 
