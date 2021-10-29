@@ -84,3 +84,40 @@ bool Input::getKeyUp(KeyCode keycode)
         return false;
     }
 }
+
+bool Input::getMoustButton(int button)
+{
+    //button 이 0 이면..왼쪽   마우스 버튼(VK_LBUTTON)이고..상태..배열 인덱스 6
+    //button 이 1 이면..오른쪽 마우스 버튼(VK_RBUTTON)이고..상태..배열 인덱스 7
+    //button 이 2 이면..가운데 마우스 버튼(VK_MBUTTON)이고..상태..배열 인덱스 8
+
+    if (state[button + 6] == State::keyDownRep || state[button + 6] == State::keyDown)
+    {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+bool Input::getMoustButtonDown(int button)
+{
+    if (state[button + 6] == State::keyDown)
+    {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+bool Input::getMoustButtonUp(int button)
+{
+    if (state[button + 6] == State::keyUp)
+    {
+        return true;
+    }
+    else {
+        return false;
+    }
+}

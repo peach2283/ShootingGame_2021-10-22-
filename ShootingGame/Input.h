@@ -17,7 +17,13 @@ private:
 public:
 	static void update();
 
+	//키입력 상태..체크 함수//
 	static bool getKey    (KeyCode keycode);
 	static bool getKeyDown(KeyCode keycode);
 	static bool getKeyUp  (KeyCode keycode);
+
+	//마우스 버튼 상태..체크 함수//
+	static bool getMoustButton	  (int button);
+	static bool getMoustButtonDown(int button);
+	static bool getMoustButtonUp  (int button);
 };

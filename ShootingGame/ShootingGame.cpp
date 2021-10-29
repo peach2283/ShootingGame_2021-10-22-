@@ -48,6 +48,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ObjectManager::instantiate(new GameBG(0          ,          0)); //게임배경 추가
     ObjectManager::instantiate(new Player(WIDTH/2-34 , HEIGHT-150)); //플레이어 추가
 
+    //애니메이션..클래스 테스트하기//
+    ObjectManager::instantiate(new Animation("", "", true, 0, 0));
+
     // 기본 메시지 루프입니다:
     while (true)
     {

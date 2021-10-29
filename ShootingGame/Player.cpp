@@ -109,5 +109,4 @@ void Player::fire()  //발사 함수
 			fireTimer = 0;
 		}
 	}
-
 }
