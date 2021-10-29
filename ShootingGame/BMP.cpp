@@ -57,6 +57,58 @@ void BMP::readBMP(const char* fileName, Image* image)
 	}
 }
 
+void BMP::readBMP(const char* fileName, int x, int y, int width, int height, Image* image)
+{
+	//비트맵 파일 로드하기//
+	BITMAPFILEHEADER bf;
+	BITMAPINFOHEADER bi;
+
+	FILE* stream;
+
+	stream = fopen(fileName, "rb");
+
+	if (stream != nullptr)
+	{
+		//비트맵파일 헤더 읽어오기//
+		fread(&bf, sizeof(BITMAPFILEHEADER), 1, stream);
+
+		//비트맵인포 헤더 읽어오기//
+		fread(&bi, sizeof(BITMAPINFOHEADER), 1, stream);
+		
+		//(x, y, width, height) 사각형 영역의...비트맵..픽셀데이타..읽어오기//
+		//[1] 읽어들일..데이타..위치가까..이동하기
+		
+		int offset = bi.biWidth * y * 4 + x * 4;
+		fseek(stream, offset, SEEK_CUR);
+
+		//[2] 데이타..저장 메모리..할당하기
+		int length         = width * height;
+		unsigned int* argb = new unsigned int[length];
+
+		//데이타..읽기후.. 이동값
+		int hGap = (bi.biWidth - width)*4;
+
+		//[3] 비트맵..데이타..읽기
+		for (int i = 0; i < height; i++)
+		{
+			fread(argb, sizeof(unsigned int), width, stream);
+			fseek(stream, hGap, SEEK_CUR);
+		}
+
+		//로드한..비트맵 정보/데이타를...구조체 배열에..저장//
+		image->width  = width;  //이미지 가로
+		image->height = height; //이미지 세로
+		image->argb   = argb;    //이미지 픽셀데이타
+
+		//파일닫기
+		fclose(stream);
+	}
+	else {
+		printf("비트맵 파일을 열수 없습니다\n");
+	}
+
+}
+
 void BMP::drawBMP(float px, float py, Image* image)
 {
 	//로드한 이미지 출력하기//

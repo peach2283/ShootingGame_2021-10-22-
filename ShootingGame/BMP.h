@@ -12,5 +12,8 @@ class BMP
 private:
 public:
 	static void readBMP(const char* fileName, Image* image);
+	static void readBMP(const char* fileName, int x, int y, int width, int height,  Image* image);
+
+
 	static void drawBMP(float  px, float py , Image* image);
 };

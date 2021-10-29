@@ -10,7 +10,7 @@ Animation::~Animation()
 
 void Animation::start()
 {
-	BMP::readBMP("Asset/적기.bmp", &image);
+	BMP::readBMP("Asset/적기.bmp", 201, 141, 190, 137, &image);
 }
 
 void Animation::draw()
