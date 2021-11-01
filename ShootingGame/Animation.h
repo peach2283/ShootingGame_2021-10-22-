@@ -22,6 +22,9 @@ public:
 	Animation(string tag, string name, bool active, float px, float py);
 	~Animation();
 
+	//애니메이션 이미지 로드함수//
+	void addImage(const char* fileName, int x, int y, int width, int height, int clip);
+
 	void start();
 	void draw();
 };
