@@ -91,8 +91,8 @@ void BMP::readBMP(const char* fileName, int x, int y, int width, int height, Ima
 		//[3] 비트맵..데이타..읽기
 		for (int i = 0; i < height; i++)
 		{
-			fread(argb, sizeof(unsigned int), width, stream);
-			fseek(stream, hGap, SEEK_CUR);
+			fread(argb + i*width, sizeof(unsigned int), width, stream);
+			fseek(stream        , hGap, SEEK_CUR);
 		}
 
 		//로드한..비트맵 정보/데이타를...구조체 배열에..저장//
