@@ -18,13 +18,21 @@ private:
 	float imageTimer;
 	float imageDelay;
 
+	bool loop;
+
 public:
 	Animation(string tag, string name, bool active, float px, float py);
 	~Animation();
 
+	void start();
+	void draw();
+
 	//애니메이션 이미지 로드함수//
 	void addImage(const char* fileName, int x, int y, int width, int height, int clip);
 
-	void start();
-	void draw();
+	//재생중인 애니메이션..변경하기//
+	void play(int clip);
+
+	//looping 세터
+	void setLoop(bool loop);
 };

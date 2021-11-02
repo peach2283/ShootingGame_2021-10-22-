@@ -1,7 +1,7 @@
 #include "framework.h"
 #include "ShootingGame.h"
 
-Player::Player(float px, float py) : Sprite("","", true, px, py)
+Player::Player(float px, float py) : Animation("","", true, px, py)
 {
 	this->speed = 200;
 
@@ -14,7 +14,18 @@ Player::~Player()
 
 void Player::start()
 {
-	setImage("Asset/플레이어.bmp");
+	//애니메이션...이미지 추가하기//
+	
+	//가운데..이동하지 않는 애니메이션 - 0 번//
+	addImage("Asset/팬텀이동2.bmp", 192, 0, 62, 80, 0);
+
+	//오른쪽..이동 애니메이션 - 1 번//
+	addImage("Asset/팬텀이동2.bmp", 192 + 64 *1, 0, 62, 80, 1);
+	addImage("Asset/팬텀이동2.bmp", 192 + 64 *2, 0, 62, 80, 1);
+	addImage("Asset/팬텀이동2.bmp", 192 + 64 *3, 0, 62, 80, 1);
+
+	//애니메이션..루푸(loop) 옵션 지정//
+	setLoop(false);
 }
 
 void Player::update()
@@ -36,9 +47,9 @@ void Player::move()  //이동 함수
 		//플레이어가 상단 경계벗어남 방지
 		float py = getPy();
 
-		if (py < 0)
+		if (py < -5)
 		{
-			setPy(0);
+			setPy(-5);
 		}
 	}
 
@@ -49,9 +60,9 @@ void Player::move()  //이동 함수
 		//플레이어가 하단 경계벗어남 방지
 		float py = getPy();
 
-		if (py > HEIGHT - 91)
+		if (py > HEIGHT - 73)
 		{
-			setPy(HEIGHT - 91);
+			setPy(HEIGHT - 73);
 		}
 	}
 
@@ -62,9 +73,9 @@ void Player::move()  //이동 함수
 		//플레이어가 왼쪽 경계벗어남을 방지
 		float px = getPx();
 
-		if (px < 0)
+		if (px < -9)
 		{
-			setPx(0);
+			setPx(-9);
 		}
 	}
 
@@ -72,12 +83,15 @@ void Player::move()  //이동 함수
 	{
 		translate(dist, 0);
 
+		//애니메이션 변경하기
+		play(1);
+
 		//플레이어가 오른쪽 경계벗어만을 방지
 		float px = getPx();
 
-		if (px > WIDTH - 68)
+		if (px > WIDTH - 53)
 		{
-			setPx(WIDTH - 68);
+			setPx(WIDTH - 53);
 		}
 	}
 }
@@ -95,16 +109,16 @@ void Player::fire()  //발사 함수
 			float py = getPy();
 
 			///한발 발사하기//
-			ObjectManager::instantiate(new Laser(px + 31, py - 20));
+			ObjectManager::instantiate(new Laser(px + 29, py - 20));
 
 			///두발 발사하기//
-			//ObjectManager::instantiate(new Laser(px + 26, py - 20));
-			//ObjectManager::instantiate(new Laser(px + 36, py - 20));
+			//ObjectManager::instantiate(new Laser(px + 24, py - 20));
+			//ObjectManager::instantiate(new Laser(px + 34, py - 20));
 
 			//세발 발사하기//
-			//ObjectManager::instantiate(new Laser(px + 23, py - 15));  //왼쪽
-			//ObjectManager::instantiate(new Laser(px + 31, py - 25));  //가운데..
-			//ObjectManager::instantiate(new Laser(px + 39, py - 15));  //오른쪽
+			//ObjectManager::instantiate(new Laser(px + 21, py - 15));  //왼쪽
+			//ObjectManager::instantiate(new Laser(px + 29, py - 25));  //가운데..
+			//ObjectManager::instantiate(new Laser(px + 37, py - 15));  //오른쪽
 
 			fireTimer = 0;
 		}

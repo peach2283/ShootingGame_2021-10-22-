@@ -9,6 +9,8 @@ Animation::Animation(string tag, string name, bool active, float px, float py)
 
 	this->imageTimer = 0;
 	this->imageDelay = 0.05;
+
+	this->loop = true;
 }
 
 Animation::~Animation()
@@ -16,7 +18,20 @@ Animation::~Animation()
 
 void Animation::start()
 {
-	
+}
+
+void Animation::play(int clip)
+{
+	if (clipIndex != clip)
+	{
+		imageIndex = 0;
+		clipIndex = clip;
+	}
+}
+
+void Animation::setLoop(bool loop)
+{
+	this->loop = loop;
 }
 
 void Animation::addImage(const char* fileName, int x, int y, int width, int height, int clip)
@@ -43,7 +58,13 @@ void Animation::draw()
 
 		if ( imageIndex  >= image[clipIndex].size() )
 		{
-			imageIndex = 0;
+			if (loop == true)
+			{
+				imageIndex = 0; //처음이미지 부터..반복(looping)
+			}
+			else {
+				imageIndex = image[clipIndex].size() - 1; //마지막..이미지로..유지
+			}
 		}
 
 		imageTimer = 0;
