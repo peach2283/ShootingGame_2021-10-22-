@@ -20,12 +20,22 @@ void Player::start()
 	addImage("Asset/팬텀이동2.bmp", 192, 0, 62, 80, 0);
 
 	//오른쪽..이동 애니메이션 - 1 번//
-	addImage("Asset/팬텀이동2.bmp", 192 + 64 *1, 0, 62, 80, 1);
-	addImage("Asset/팬텀이동2.bmp", 192 + 64 *2, 0, 62, 80, 1);
-	addImage("Asset/팬텀이동2.bmp", 192 + 64 *3, 0, 62, 80, 1);
+	addImage("Asset/팬텀이동2.bmp", 192 + 64 * 0, 0, 62, 80, 1);
+	addImage("Asset/팬텀이동2.bmp", 192 + 64 * 1, 0, 62, 80, 1);
+	addImage("Asset/팬텀이동2.bmp", 192 + 64 * 2, 0, 62, 80, 1);
+	addImage("Asset/팬텀이동2.bmp", 192 + 64 * 3, 0, 62, 80, 1);
+
+	//왼쪽...이동 애니메이션 - 2번
+	addImage("Asset/팬텀이동2.bmp", 192 - 64 * 0, 0, 62, 80, 2);
+	addImage("Asset/팬텀이동2.bmp", 192 - 64 * 1, 0, 62, 80, 2);
+	addImage("Asset/팬텀이동2.bmp", 192 - 64 * 2, 0, 62, 80, 2);
+	addImage("Asset/팬텀이동2.bmp", 192 - 64 * 3, 0, 62, 80, 2);
 
 	//애니메이션..루푸(loop) 옵션 지정//
 	setLoop(false);
+
+	//애니메이션..이미지 딜레이 옵션 지정//
+	setImageDelay(0.1);
 }
 
 void Player::update()
@@ -70,6 +80,9 @@ void Player::move()  //이동 함수
 	{
 		translate(-dist, 0);
 
+		//애니메이션..변경하기
+		play(2);
+
 		//플레이어가 왼쪽 경계벗어남을 방지
 		float px = getPx();
 
@@ -93,6 +106,13 @@ void Player::move()  //이동 함수
 		{
 			setPx(WIDTH - 53);
 		}
+	}
+
+	//좌우..이동키 입력이 없을때...
+	if (Input::getKey(KeyCode::leftArrow) != true && Input::getKey(KeyCode::rightArrow) != true)
+	{
+		//애니메이션 변경하기
+		play(0);
 	}
 }
 

@@ -14,7 +14,17 @@ Animation::Animation(string tag, string name, bool active, float px, float py)
 }
 
 Animation::~Animation()
-{}
+{
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = 0; j < image[i].size(); j++)
+		{
+			delete[] image[i][j].argb;
+		}
+
+		image[i].clear();
+	}
+}
 
 void Animation::start()
 {
@@ -32,6 +42,11 @@ void Animation::play(int clip)
 void Animation::setLoop(bool loop)
 {
 	this->loop = loop;
+}
+
+void Animation::setImageDelay(float delay)
+{
+	this->imageDelay = delay;
 }
 
 void Animation::addImage(const char* fileName, int x, int y, int width, int height, int clip)

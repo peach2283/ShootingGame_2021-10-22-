@@ -35,4 +35,7 @@ public:
 
 	//looping 세터
 	void setLoop(bool loop);
+
+	//이미지 딜레이(애니메이션 속도) 세터
+	void setImageDelay(float delay);
 };
