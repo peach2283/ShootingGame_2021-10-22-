@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include "BoxCollider2D.h"
 
 using namespace std;
 
@@ -17,7 +18,9 @@ private:
 	float px;
 	float py;
 
-	//기타 속성//
+	//2D 박스콜라이더 목록//
+	BoxCollider2D* collider;
+
 public:
 	//생성자, 소멸자
 	GameObject(string tag, string name, bool active, float px, float py);
@@ -45,4 +48,7 @@ public:
 
 	//기타 함수//
 	void translate(float x, float y);
+
+	//2D 충돌체 추가함수//
+	void addBoxCollider2D(BoxCollider2D* box);
 };

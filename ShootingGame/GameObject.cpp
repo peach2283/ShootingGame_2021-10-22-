@@ -11,6 +11,8 @@ GameObject::GameObject(string tag, string name, bool active, float px, float py)
 
 	this->px = px;
 	this->py = py;
+
+	this->collider = nullptr;
 }
 
 GameObject::~GameObject()
@@ -82,4 +84,9 @@ void GameObject::translate(float x, float y)
 {
 	px = px + x;
 	py = py + y;
+}
+
+void GameObject::addBoxCollider2D(BoxCollider2D* box)
+{
+	collider = box;
 }

@@ -14,8 +14,7 @@ Player::~Player()
 
 void Player::start()
 {
-	//애니메이션...이미지 추가하기//
-	
+	//애니메이션...이미지 추가하기//	
 	//가운데..이동하지 않는 애니메이션 - 0 번//
 	addImage("Asset/팬텀이동2.bmp", 192, 0, 62, 80, 0);
 
@@ -36,6 +35,9 @@ void Player::start()
 
 	//애니메이션..이미지 딜레이 옵션 지정//
 	setImageDelay(0.1);
+
+	//충돌체 추가하기//
+	addBoxCollider2D(new BoxCollider2D(0, 0, 62, 80));
 }
 
 void Player::update()
