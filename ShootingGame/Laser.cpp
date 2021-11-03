@@ -12,6 +12,9 @@ Laser::~Laser()
 void Laser::start()
 {
 	setImage("Asset/레이저.bmp");
+
+	//충돌체 추가
+	addBoxCollider2D(new BoxCollider2D(0, 0, 6, 33));
 }
 
 void Laser::update()
