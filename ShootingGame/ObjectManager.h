@@ -16,6 +16,7 @@ public:
 
 	//gameObject STL vector에..추가된 객체 업데이트/그리기/삭제하기 함수//
 	static void update();
+	static void checkCollision();
 	static void draw();
 	static void clear();
 };

@@ -118,3 +118,8 @@ void GameObject::addBoxCollider2D(BoxCollider2D* box)
 	//박스 추가하기
 	collider = box;
 }
+
+BoxCollider2D* GameObject::getCollider()
+{
+	return collider;
+}

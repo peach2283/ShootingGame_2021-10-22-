@@ -1,7 +1,7 @@
 #include "framework.h"
 #include "ShootingGame.h"
 
-Laser::Laser(float px, float py) : Sprite("","", true, px, py)
+Laser::Laser(float px, float py) : Sprite("·¹ÀÌÀú","", true, px, py)
 {
 	this->speed = 250;
 }

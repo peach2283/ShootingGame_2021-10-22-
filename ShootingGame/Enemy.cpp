@@ -1,7 +1,7 @@
 #include "framework.h"
 #include "ShootingGame.h"
 
-Enemy::Enemy(float px, float py) : Animation("","",true, px, py)
+Enemy::Enemy(float px, float py) : Animation("Àû±â","",true, px, py)
 {}
 
 Enemy::~Enemy()

@@ -1,7 +1,7 @@
 #include "framework.h"
 #include "ShootingGame.h"
 
-Player::Player(float px, float py) : Animation("","", true, px, py)
+Player::Player(float px, float py) : Animation("플레이어","", true, px, py)
 {
 	this->speed = 200;
 

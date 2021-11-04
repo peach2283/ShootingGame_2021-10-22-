@@ -1,7 +1,7 @@
 #include "framework.h"
 #include "ShootingGame.h"
 
-GameBG::GameBG(float px, float py) : Sprite("", "", true, px, py)
+GameBG::GameBG(float px, float py) : Sprite("¹è°æ", "", true, px, py)
 {}
 
 GameBG::~GameBG()

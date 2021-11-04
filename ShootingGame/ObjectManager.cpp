@@ -17,6 +17,35 @@ void ObjectManager::update()
 	}
 }
 
+void ObjectManager::checkCollision()
+{
+	cout << "----------------------------------" << endl;
+
+	for (int i = 0; i < gameObject.size(); i++)
+	{
+		for (int j = 0; j < gameObject.size(); j++)
+		{
+			if (i < j)
+			{
+				GameObject* objI = gameObject[i];
+				GameObject* objJ = gameObject[j];
+
+				BoxCollider2D * colI = objI->getCollider();
+				BoxCollider2D * colJ = objJ->getCollider();
+
+				if (colI != nullptr && colJ != nullptr)
+				{
+					cout << "(" << objI->getTag() << " , " << objJ->getTag() << ") ";
+				}
+			}
+		}
+
+		cout << endl;
+	}
+
+	cout << endl;
+}
+
 void ObjectManager::draw()
 {
 	for (int i = 0; i < gameObject.size(); i++)

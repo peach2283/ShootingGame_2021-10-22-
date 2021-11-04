@@ -54,4 +54,7 @@ public:
 
 	//2D 충돌체 추가함수//
 	void addBoxCollider2D(BoxCollider2D* box);
+
+	//2D 충돌체 게터
+	BoxCollider2D * getCollider();
 };
