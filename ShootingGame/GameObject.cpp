@@ -17,7 +17,6 @@ GameObject::GameObject(string tag, string name, bool active, float px, float py)
 
 GameObject::~GameObject()
 {
-	cout << "---부모 GameObject 소멸자---" << endl;
 }
 
 //게터, 세타

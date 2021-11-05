@@ -40,16 +40,26 @@ void Enemy::update()
 void Enemy::onTrigger(GameObject * other)
 {
 	string tag = other->getTag();
-
-	cout << "----적기에 충돌 발생----"      << endl;
 	
 	if (tag == "레이저")
 	{
-		cout << "----레이저와 충돌함 " << endl;
+		//체력감소
+		hp = hp - 10;
+
+		cout << "체력 " << hp << endl;
+
+		//체력이 모두 소진되었는지를...검사
+		if (hp <= 0)
+		{
+			//적기 폭발
+
+			//적기 제거
+			ObjectManager::destroy(this);
+		}
+
 	}
 	else if (tag == "플레이어")
 	{
-		cout << "---플레이어와 충돌함 " << endl;
-	}
 
+	}
 }

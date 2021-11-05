@@ -9,6 +9,22 @@ void ObjectManager::instantiate(GameObject* o)
 	o->start();
 }
 
+void ObjectManager::destroy(GameObject* o)
+{
+	for (int i = 0; i < gameObject.size(); i++)
+	{
+		if (gameObject[i] == o)
+		{
+			//stl vector 목록에서 제거
+			gameObject.erase(gameObject.begin() + i); 
+			i--;
+
+			//객체 delete 하기
+			delete o;
+		}
+	}
+}
+
 void ObjectManager::update()
 {
 	for (int i = 0; i < gameObject.size(); i++)

@@ -22,3 +22,16 @@ void Laser::update()
 	float dist = speed * Time::deltaTime;
 	translate(0, -dist);
 }
+
+void Laser::onTrigger(GameObject* other)
+{
+	string tag = other->getTag();
+
+	if (tag == "적기")
+	{
+		//폭발
+
+		//제거
+		ObjectManager::destroy(this);
+	}
+}

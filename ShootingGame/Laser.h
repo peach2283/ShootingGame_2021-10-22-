@@ -13,4 +13,7 @@ public:
 
 	void start();
 	void update();
+
+	//충돌 이벤트...오버라이딩
+	void onTrigger(GameObject* other);
 };
