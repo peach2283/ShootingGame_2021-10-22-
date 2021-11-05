@@ -123,3 +123,7 @@ BoxCollider2D* GameObject::getCollider()
 {
 	return collider;
 }
+
+void GameObject::onTrigger(GameObject * other)
+{
+}

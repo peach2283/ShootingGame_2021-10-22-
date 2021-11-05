@@ -57,4 +57,7 @@ public:
 
 	//2D 충돌체 게터
 	BoxCollider2D * getCollider();
+
+	//충돌(Trigger) 이벤트 가상 함수
+	virtual void onTrigger(GameObject * other);
 };

@@ -19,8 +19,6 @@ void ObjectManager::update()
 
 void ObjectManager::checkCollision()
 {
-	cout << "----------------------------------" << endl;
-
 	for (int i = 0; i < gameObject.size(); i++)
 	{
 		for (int j = 0; j < gameObject.size(); j++)
@@ -54,16 +52,14 @@ void ObjectManager::checkCollision()
 
 					if (y0I < y1J && y1I > y0J && x1I > x0J && x0I < x1J)
 					{
-						cout << "(" << objI->getTag() << " , " << objJ->getTag() << ") 충돌함";
+						//objI 하고 objJ ... 게임오브젝트가 충돌함
+						objI->onTrigger(objJ); //objI의 함수를 이용해서..objJ와 충돌(Trigger)이 발생했음을..알림
+						objJ->onTrigger(objI); //objJ의 함수를 이용해서..objI와 충돌(Trigger)이 발생했음을..알림
 					}
 				}
 			}
-		}
-
-		cout << endl;
+		}		
 	}
-
-	cout << endl;
 }
 
 void ObjectManager::draw()

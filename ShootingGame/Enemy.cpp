@@ -2,7 +2,9 @@
 #include "ShootingGame.h"
 
 Enemy::Enemy(float px, float py) : Animation("적기","",true, px, py)
-{}
+{
+	this->hp = 100; //적기체력
+}
 
 Enemy::~Enemy()
 {}
@@ -34,3 +36,20 @@ void Enemy::start()
 
 void Enemy::update()
 {}
+
+void Enemy::onTrigger(GameObject * other)
+{
+	string tag = other->getTag();
+
+	cout << "----적기에 충돌 발생----"      << endl;
+	
+	if (tag == "레이저")
+	{
+		cout << "----레이저와 충돌함 " << endl;
+	}
+	else if (tag == "플레이어")
+	{
+		cout << "---플레이어와 충돌함 " << endl;
+	}
+
+}
