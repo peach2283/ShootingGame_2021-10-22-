@@ -51,6 +51,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     //적기 테스트하기//
     ObjectManager::instantiate(new Enemy(150, 300));
 
+    //레이저 폭발 테스트하기
+    ObjectManager::instantiate(new LaserExp(100, 100));
+
     // 기본 메시지 루프입니다:
     while (true)
     {

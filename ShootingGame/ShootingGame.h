@@ -16,6 +16,7 @@
 #include "Animation.h"
 #include "Enemy.h"
 #include "BoxCollider2D.h"
+#include "LaserExp.h"
 
 #define WIDTH  480  //게임장면..가로크기
 #define HEIGHT 800  //게임장면..세로크기

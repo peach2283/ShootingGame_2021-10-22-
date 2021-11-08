@@ -80,8 +80,14 @@ void Animation::draw()
 			else {
 				imageIndex = image[clipIndex].size() - 1; //마지막..이미지로..유지
 			}
+
+			//애니메이션...마지막 이미지 출력 이벤트 만들기//
+			onAnimationEnd();
 		}
 
 		imageTimer = 0;
 	}
 }
+
+void Animation::onAnimationEnd()
+{}

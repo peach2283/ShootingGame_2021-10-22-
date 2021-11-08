@@ -38,4 +38,7 @@ public:
 
 	//이미지 딜레이(애니메이션 속도) 세터
 	void setImageDelay(float delay);
+
+	//애니메이션 마지막 이미지 출력 이벤트//
+	virtual void onAnimationEnd();
 };
