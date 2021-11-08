@@ -77,6 +77,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
         ObjectManager::update();
         ObjectManager::checkCollision();
+        ObjectManager::clearDeadObject();
         ObjectManager::draw();
 
         render();

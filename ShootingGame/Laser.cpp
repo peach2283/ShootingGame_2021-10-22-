@@ -32,6 +32,6 @@ void Laser::onTrigger(GameObject* other)
 		//Æø¹ß
 
 		//Á¦°Å
-		ObjectManager::destroy(this);
+		destroy(this);
 	}
 }

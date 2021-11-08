@@ -5,9 +5,10 @@
 //持失切, 社瑚切
 GameObject::GameObject(string tag, string name, bool active, float px, float py)
 {
-	this->tag		= tag;
-	this->name		= name;
-	this->active	= active;
+	this->tag	 = tag;
+	this->name	 = name;
+	this->active = active;
+	this->isDead = false;
 
 	this->px = px;
 	this->py = py;
@@ -45,6 +46,11 @@ float GameObject::getPy()
 	return py;
 }
 
+bool GameObject::getIsDead()
+{
+	return isDead;
+}
+
 void GameObject::setTag(string tag)
 {
 	this->tag = tag;
@@ -68,6 +74,11 @@ void GameObject::setPx(float px)
 void GameObject::setPy(float py)
 {
 	this->py = py;
+}
+
+void GameObject::setIsDead(bool isDead)
+{
+	this->isDead = isDead;
 }
 
 void GameObject::start()
@@ -125,4 +136,14 @@ BoxCollider2D* GameObject::getCollider()
 
 void GameObject::onTrigger(GameObject * other)
 {
+}
+
+void GameObject::instantiate(GameObject* o)
+{
+	ObjectManager::instantiate(o);
+}
+
+void GameObject::destroy(GameObject* o)
+{
+	ObjectManager::destroy(o);
 }

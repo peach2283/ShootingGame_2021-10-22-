@@ -11,18 +11,8 @@ void ObjectManager::instantiate(GameObject* o)
 
 void ObjectManager::destroy(GameObject* o)
 {
-	for (int i = 0; i < gameObject.size(); i++)
-	{
-		if (gameObject[i] == o)
-		{
-			//stl vector 목록에서 제거
-			gameObject.erase(gameObject.begin() + i); 
-			i--;
-
-			//객체 delete 하기
-			delete o;
-		}
-	}
+	//삭제 객체를 .. 충돌이후에 삭제되어야 한다는..정보를 표시하고..충돌이후에..실제로 제거함
+	o->setIsDead(true);
 }
 
 void ObjectManager::update()
@@ -35,6 +25,7 @@ void ObjectManager::update()
 
 void ObjectManager::checkCollision()
 {
+
 	for (int i = 0; i < gameObject.size(); i++)
 	{
 		for (int j = 0; j < gameObject.size(); j++)
@@ -75,6 +66,25 @@ void ObjectManager::checkCollision()
 				}
 			}
 		}		
+	}	
+}
+
+void ObjectManager::clearDeadObject()
+{
+	/////////////////////삭제로..표시된...객체를 제거함///////////
+	for (int i = 0; i < gameObject.size(); i++)
+	{
+		if (gameObject[i]->getIsDead() == true)  //삭제로..표시된 객체
+		{
+			GameObject* o = gameObject[i];
+
+			//stl vector 목록에서 제거
+			gameObject.erase(gameObject.begin() + i);
+			i--;
+
+			//객체 delete 하기
+			delete o;
+		}
 	}
 }
 

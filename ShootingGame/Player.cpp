@@ -131,16 +131,16 @@ void Player::fire()  //발사 함수
 			float py = getPy();
 
 			///한발 발사하기//
-			ObjectManager::instantiate(new Laser(px + 29, py - 20));
+			instantiate(new Laser(px + 29, py - 20));
 
 			///두발 발사하기//
-			//ObjectManager::instantiate(new Laser(px + 24, py - 20));
-			//ObjectManager::instantiate(new Laser(px + 34, py - 20));
+			//instantiate(new Laser(px + 24, py - 20));
+			//instantiate(new Laser(px + 34, py - 20));
 
 			//세발 발사하기//
-			//ObjectManager::instantiate(new Laser(px + 21, py - 15));  //왼쪽
-			//ObjectManager::instantiate(new Laser(px + 29, py - 25));  //가운데..
-			//ObjectManager::instantiate(new Laser(px + 37, py - 15));  //오른쪽
+			//instantiate(new Laser(px + 21, py - 15));  //왼쪽
+			//instantiate(new Laser(px + 29, py - 25));  //가운데..
+			//instantiate(new Laser(px + 37, py - 15));  //오른쪽
 
 			fireTimer = 0;
 		}

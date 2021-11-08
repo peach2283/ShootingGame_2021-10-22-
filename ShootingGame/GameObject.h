@@ -18,6 +18,9 @@ private:
 	float px;
 	float py;
 
+	//객체가 삭제대상인지를 표시하는 변수
+	bool isDead;  //true(삭제 대상임), false(삭제대상 아님)
+
 	//2D 박스콜라이더 목록//
 	BoxCollider2D* collider;
 
@@ -33,6 +36,7 @@ public:
 
 	float getPx();
 	float getPy();
+	bool  getIsDead();
 
 	void setTag(string tag);
 	void setName(string name);
@@ -40,6 +44,7 @@ public:
 
 	void setPx(float px);
 	void setPy(float py);
+	void setIsDead(bool isDead);
 
 	//기본 가상함수
 	virtual void start();
@@ -60,4 +65,8 @@ public:
 
 	//충돌(Trigger) 이벤트 가상 함수
 	virtual void onTrigger(GameObject * other);
+
+	//객체 생성 및 제거함수
+	void instantiate(GameObject* o);
+	void destroy(GameObject* o);
 };

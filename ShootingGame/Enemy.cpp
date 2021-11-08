@@ -45,16 +45,28 @@ void Enemy::onTrigger(GameObject * other)
 	{
 		//체력감소
 		hp = hp - 10;
+	
+		if (70 <= hp && hp <= 100)
+		{
+			//피해없음
+			play(0);
+		}
+		else if (40 <= hp && hp < 70)
+		{
+			//적은 피해
+			play(1);
+		}
+		else if (0 < hp && hp < 40)
+		{
+			//심각한 피해
+			play(2);
 
-		cout << "체력 " << hp << endl;
-
-		//체력이 모두 소진되었는지를...검사
-		if (hp <= 0)
+		}else if (hp <= 0) //체력이 모두 소진되었는지를...검사
 		{
 			//적기 폭발
 
 			//적기 제거
-			ObjectManager::destroy(this);
+			destroy(this);
 		}
 
 	}
