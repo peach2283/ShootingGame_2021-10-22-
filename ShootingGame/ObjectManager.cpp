@@ -25,9 +25,6 @@ void ObjectManager::update()
 
 void ObjectManager::checkCollision()
 {
-
-	/************************************************
-
 	for (int i = 0; i < gameObject.size(); i++)
 	{
 		for (int j = 0; j < gameObject.size(); j++)
@@ -37,42 +34,43 @@ void ObjectManager::checkCollision()
 				GameObject* objI = gameObject[i];
 				GameObject* objJ = gameObject[j];
 
-				BoxCollider2D * colI = objI->getCollider();
-				BoxCollider2D * colJ = objJ->getCollider();
+				vector<BoxCollider2D *> colI = objI->getCollider();
+				vector<BoxCollider2D *> colJ = objJ->getCollider();
 
-				if (colI != nullptr && colJ != nullptr)
+				for (int ii = 0; ii < colI.size(); ii++)
 				{
-					//충돌 박스 좌표 구하기//
-					float x, y, width, height;
-					float x0I, y0I, x1I, y1I;    //objI(colI)의 박스 충돌체 좌표
-					float x0J, y0J, x1J, y1J;    //objJ(colJ)의 박스 충돌체 좌표
+					for (int jj = 0; jj < colJ.size(); jj++)
+					{						
+						//colI[ii]  충돌체와 colJ[jj] 충돌체와...충돌검사를 실시함
+						//충돌 박스 좌표 구하기//
+						float x, y, width, height;
+						float x0I, y0I, x1I, y1I;    //objI(colI)의 박스 충돌체 좌표
+						float x0J, y0J, x1J, y1J;    //objJ(colJ)의 박스 충돌체 좌표
 
-					colI->getBoudingBox(x, y, width, height);
-					x0I = x;
-					y0I = y;
-					x1I = x0I + width;
-					y1I = y0I + height;
+						colI[ii]->getBoudingBox(x, y, width, height);
+						x0I = x;
+						y0I = y;
+						x1I = x0I + width;
+						y1I = y0I + height;
 
-					colJ->getBoudingBox(x, y, width, height);
-					x0J = x;
-					y0J = y;
-					x1J = x0J + width;
-					y1J = y0J + height;
 
-					if (y0I < y1J && y1I > y0J && x1I > x0J && x0I < x1J)
-					{
-						//objI 하고 objJ ... 게임오브젝트가 충돌함
-						objI->onTrigger(objJ); //objI의 함수를 이용해서..objJ와 충돌(Trigger)이 발생했음을..알림
-						objJ->onTrigger(objI); //objJ의 함수를 이용해서..objI와 충돌(Trigger)이 발생했음을..알림
+						colJ[jj]->getBoudingBox(x, y, width, height);
+						x0J = x;
+						y0J = y;
+						x1J = x0J + width;
+						y1J = y0J + height;
+
+						if (y0I < y1J && y1I > y0J && x1I > x0J && x0I < x1J)
+						{
+							//objI 하고 objJ ... 게임오브젝트가 충돌함
+							objI->onTrigger(objJ); //objI의 함수를 이용해서..objJ와 충돌(Trigger)이 발생했음을..알림
+							objJ->onTrigger(objI); //objJ의 함수를 이용해서..objI와 충돌(Trigger)이 발생했음을..알림
+						}
 					}
 				}
 			}
 		}		
 	}
-
-	**********************************************/
-
-
 }
 
 void ObjectManager::clearDeadObject()
