@@ -37,7 +37,8 @@ void Player::start()
 	setImageDelay(0.1);
 
 	//충돌체 추가하기//
-	addBoxCollider2D(new BoxCollider2D(0, 0, 62, 80));
+	addBoxCollider2D(new BoxCollider2D(24, 5,  14, 65));
+	addBoxCollider2D(new BoxCollider2D(5 , 42, 52, 15));
 }
 
 void Player::update()

@@ -31,7 +31,9 @@ void Enemy::start()
 	}
 
 	//충돌체 추가하기
-	addBoxCollider2D(new BoxCollider2D(0, 0, 190, 137));
+	addBoxCollider2D(new BoxCollider2D(0,  80, 190,  25));
+	addBoxCollider2D(new BoxCollider2D(88, 25 , 14, 110));
+	addBoxCollider2D(new BoxCollider2D(60, 10  , 70, 15));
 }
 
 void Enemy::update()
@@ -66,7 +68,7 @@ void Enemy::onTrigger(GameObject * other)
 			//적기 폭발
 
 			//적기 제거
-			destroy(this);
+			//destroy(this);
 		}
 
 	}

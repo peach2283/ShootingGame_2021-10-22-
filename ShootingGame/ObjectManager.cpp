@@ -26,6 +26,8 @@ void ObjectManager::update()
 void ObjectManager::checkCollision()
 {
 
+	/************************************************
+
 	for (int i = 0; i < gameObject.size(); i++)
 	{
 		for (int j = 0; j < gameObject.size(); j++)
@@ -66,7 +68,11 @@ void ObjectManager::checkCollision()
 				}
 			}
 		}		
-	}	
+	}
+
+	**********************************************/
+
+
 }
 
 void ObjectManager::clearDeadObject()

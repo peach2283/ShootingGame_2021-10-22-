@@ -29,7 +29,12 @@ void Laser::onTrigger(GameObject* other)
 
 	if (tag == "적기")
 	{
+		//현재 레이저 위치
+		float px = getPx();
+		float py = getPy();
+
 		//폭발
+		instantiate(new LaserExp(px-15, py));
 
 		//제거
 		destroy(this);

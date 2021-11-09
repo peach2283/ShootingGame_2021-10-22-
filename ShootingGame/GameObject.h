@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 #include "BoxCollider2D.h"
 
 using namespace std;
@@ -22,7 +23,7 @@ private:
 	bool isDead;  //true(삭제 대상임), false(삭제대상 아님)
 
 	//2D 박스콜라이더 목록//
-	BoxCollider2D* collider;
+	vector<BoxCollider2D*> collider;
 
 public:
 	//생성자, 소멸자
@@ -61,7 +62,7 @@ public:
 	void addBoxCollider2D(BoxCollider2D* box);
 
 	//2D 충돌체 게터
-	BoxCollider2D * getCollider();
+	vector<BoxCollider2D *> getCollider();
 
 	//충돌(Trigger) 이벤트 가상 함수
 	virtual void onTrigger(GameObject * other);

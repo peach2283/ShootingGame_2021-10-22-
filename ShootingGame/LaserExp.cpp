@@ -24,5 +24,5 @@ void LaserExp::start()
 
 void LaserExp::onAnimationEnd()
 {
-	cout << "애니메이션..마지막 이미지 이벤트" << endl;
+	destroy(this);
 }

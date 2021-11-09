@@ -12,8 +12,6 @@ GameObject::GameObject(string tag, string name, bool active, float px, float py)
 
 	this->px = px;
 	this->py = py;
-
-	this->collider = nullptr;
 }
 
 GameObject::~GameObject()
@@ -92,12 +90,12 @@ void GameObject::draw()
 
 void GameObject::onDrawGizmos()
 {
-	if (collider != nullptr)
+	for(int i=0 ; i < collider.size() ; i++)
 	{
 		//2D BoxCollider 그리기//
 		float x, y, width, height;
 
-		collider->getBoudingBox(x, y, width, height);
+		collider[i]->getBoudingBox(x, y, width, height);
 
 		//사각형 꼭지점 계산
 		float x0 = x, y0 = y;
@@ -114,9 +112,9 @@ void GameObject::translate(float x, float y)
 	py = py + y;
 
 	//충돌체..이동시키기//
-	if (collider != nullptr)
+	for(int i=0 ; i < collider.size() ; i++)
 	{
-		collider->translate(x, y);
+		collider[i]->translate(x, y);
 	}
 }
 
@@ -126,12 +124,12 @@ void GameObject::addBoxCollider2D(BoxCollider2D* box)
 	box->translate(px, py);
 	
 	//박스 추가하기
-	collider = box;
+	collider.push_back(box);
 }
 
-BoxCollider2D* GameObject::getCollider()
+vector<BoxCollider2D*> GameObject::getCollider()
 {
-	return collider;
+	return collider; 
 }
 
 void GameObject::onTrigger(GameObject * other)
