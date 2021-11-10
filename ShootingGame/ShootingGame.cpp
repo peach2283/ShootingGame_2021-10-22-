@@ -79,6 +79,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         Input::update();
 
         ObjectManager::update();
+        ObjectManager::checkLifeTime();
         ObjectManager::checkCollision();
         ObjectManager::clearDeadObject();
         ObjectManager::draw();

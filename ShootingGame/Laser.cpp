@@ -15,6 +15,9 @@ void Laser::start()
 
 	//충돌체 추가
 	addBoxCollider2D(new BoxCollider2D(0, 0, 6, 33));
+
+	//레이저 제거시간(라이프타임)..지정하기//
+	destroy(this, 4);
 }
 
 void Laser::update()
@@ -23,7 +26,6 @@ void Laser::update()
 	translate(0, -dist);
 
 	cout << "레이저" << endl;
-
 }
 
 void Laser::onTrigger(GameObject* other)

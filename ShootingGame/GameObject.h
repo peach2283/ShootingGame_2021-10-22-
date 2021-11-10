@@ -19,6 +19,12 @@ private:
 	float px;
 	float py;
 
+	//라이프 타임
+	float lifeTime;
+
+	//라이프 타임 사용 여부 지정변수
+	bool useLifeTime;  //true 는 사용, false 는 사용안함
+
 	//객체가 삭제대상인지를 표시하는 변수
 	bool isDead;  //true(삭제 대상임), false(삭제대상 아님)
 
@@ -38,6 +44,7 @@ public:
 	float getPx();
 	float getPy();
 	bool  getIsDead();
+	float getLifeTime();
 
 	void setTag(string tag);
 	void setName(string name);
@@ -46,6 +53,7 @@ public:
 	void setPx(float px);
 	void setPy(float py);
 	void setIsDead(bool isDead);
+	void setLifeTime(float lifeTime);
 
 	//기본 가상함수
 	virtual void start();
@@ -70,4 +78,8 @@ public:
 	//객체 생성 및 제거함수
 	void instantiate(GameObject* o);
 	void destroy(GameObject* o);
+	void destroy(GameObject* o, float lifeTime);
+
+	//라이프타임 줄이기 함수
+	void subLifeTime();
 };

@@ -12,6 +12,9 @@ GameObject::GameObject(string tag, string name, bool active, float px, float py)
 
 	this->px = px;
 	this->py = py;
+
+	this->lifeTime    = 0;
+	this->useLifeTime = false;
 }
 
 GameObject::~GameObject()
@@ -47,6 +50,11 @@ float GameObject::getPy()
 bool GameObject::getIsDead()
 {
 	return isDead;
+}
+
+float GameObject::getLifeTime()
+{
+	return lifeTime;
 }
 
 void GameObject::setTag(string tag)
@@ -94,6 +102,12 @@ void GameObject::setPy(float py)
 void GameObject::setIsDead(bool isDead)
 {
 	this->isDead = isDead;
+}
+
+void GameObject::setLifeTime(float lifeTime)
+{
+	this->lifeTime    = lifeTime; //라이프타임 시간
+	this->useLifeTime = true;     //라이프타임 사용함
 }
 
 void GameObject::start()
@@ -161,4 +175,22 @@ void GameObject::instantiate(GameObject* o)
 void GameObject::destroy(GameObject* o)
 {
 	ObjectManager::destroy(o);
+}
+
+void GameObject::destroy(GameObject* o, float lifeTime)
+{
+	ObjectManager::destroy(o, lifeTime);
+}
+
+void GameObject::subLifeTime()
+{
+	if (useLifeTime == true)
+	{
+		lifeTime = lifeTime - Time::deltaTime;  //라이프타임 줄이기
+
+		if (lifeTime <= 0)  //라이프타임이 모두 지남
+		{
+			this->isDead = true;  //제거 대상으로..표시함
+		}
+	}
 }
