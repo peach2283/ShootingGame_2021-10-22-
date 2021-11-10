@@ -13,7 +13,9 @@ public:
 	
 	//gameObject STL vector에...객체 추가 /삭제 하기함수//
 	static void instantiate(GameObject* o);
+
 	static void destroy(GameObject* o);
+	static void destroy(GameObject* o, float lifeTime);
 
 	//gameObject STL vector에..추가된 객체 업데이트/그리기/삭제하기 함수//
 	static void update();

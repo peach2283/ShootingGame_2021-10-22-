@@ -37,7 +37,9 @@ void Enemy::start()
 }
 
 void Enemy::update()
-{}
+{
+	
+}
 
 void Enemy::onTrigger(GameObject * other)
 {
@@ -74,6 +76,6 @@ void Enemy::onTrigger(GameObject * other)
 	}
 	else if (tag == "플레이어")
 	{
-
+		
 	}
 }

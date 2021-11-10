@@ -15,6 +15,11 @@ void ObjectManager::destroy(GameObject* o)
 	o->setIsDead(true);
 }
 
+void ObjectManager::destroy(GameObject* o, float lifeTime)
+{
+	//바로삭제하기 않고...lifetime이 지나면..객체를 삭제함
+}
+
 void ObjectManager::update()
 {
 	for (int i = 0; i < gameObject.size(); i++)

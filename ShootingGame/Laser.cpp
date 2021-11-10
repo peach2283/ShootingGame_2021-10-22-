@@ -21,6 +21,9 @@ void Laser::update()
 {
 	float dist = speed * Time::deltaTime;
 	translate(0, -dist);
+
+	cout << "·¹ÀÌÀú" << endl;
+
 }
 
 void Laser::onTrigger(GameObject* other)

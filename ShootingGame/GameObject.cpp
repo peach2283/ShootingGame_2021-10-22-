@@ -66,12 +66,29 @@ void GameObject::setActive(bool active)
 
 void GameObject::setPx(float px)
 {
+	//새로운 좌표까지의 이동량
+	float dx = px - this->px;  //px = dx + this->px;
+
+	//게임오브젝트..좌표지정//
 	this->px = px;
+
+	//충돌체의..좌표를 이동//
+	for (int i = 0; i < collider.size(); i++)
+	{
+		collider[i]->translate(dx, 0);
+	}
 }
 
 void GameObject::setPy(float py)
 {
+	float dy = py - this->py;
+
 	this->py = py;
+
+	for (int i = 0; i < collider.size(); i++)
+	{
+		collider[i]->translate(0, dy);
+	}
 }
 
 void GameObject::setIsDead(bool isDead)
