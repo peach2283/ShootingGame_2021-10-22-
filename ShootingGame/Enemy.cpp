@@ -3,7 +3,10 @@
 
 Enemy::Enemy(float px, float py) : Animation("적기","",true, px, py)
 {
-	this->hp = 100; //적기체력
+	this->hp    = 100; //적기체력
+	this->speed = 100;
+	this->state = State::down;
+	
 }
 
 Enemy::~Enemy()
@@ -38,7 +41,59 @@ void Enemy::start()
 
 void Enemy::update()
 {
-	
+	switch (state)
+	{
+		case State::down:
+		{
+			float dist = speed * Time::deltaTime;
+			translate(0, dist);
+
+			float py = getPy();
+
+			if (py >= 60)
+			{
+				state = State::left;
+			}
+
+		}
+		break;
+
+		case State::left:
+		{
+			float dist = speed * Time::deltaTime;
+			translate(-dist, 0);
+
+			float px = getPx();
+
+			if (px <= 0)
+			{
+				state = State::right;
+			}
+		}
+		break;
+
+		case State::right:
+		{
+			float dist = speed * Time::deltaTime;
+			translate(dist, 0);
+
+			float px = getPx();
+
+			if (px >= 290)
+			{
+				state = State::left;
+			}
+		}
+		break;
+
+		case State::fall:
+		{
+			float dist = speed * Time::deltaTime;
+			translate(0, dist);
+		}
+		break;
+	}
+
 }
 
 void Enemy::onTrigger(GameObject * other)
@@ -62,8 +117,11 @@ void Enemy::onTrigger(GameObject * other)
 		}
 		else if (0 < hp && hp < 40)
 		{
-			//심각한 피해
+			//심각한 피해..애니메이션으로 변경
 			play(2);
+
+			//추락상태로..변경하기
+			state = State::fall;
 
 		}else if (hp <= 0) //체력이 모두 소진되었는지를...검사
 		{

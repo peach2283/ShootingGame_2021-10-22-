@@ -4,9 +4,13 @@
 
 class Enemy : public Animation
 {
+	enum class State { down = 0, left = 1, right = 2, fall = 3 };
+
 private:
 	
-	float hp; //적기 체력
+	float hp;    //적기 체력
+	float speed; //이동 속력
+	State state; //상태(State) 변수
 
 public:
 	Enemy(float px, float py);

@@ -3,13 +3,13 @@
 #include <Windows.h>
 
 //키코드 열거형
-enum class KeyCode {upArrow=0, downArrow=1, leftArrow=2, rightArrow=3, space=4, Z=5};
-
-//키보드 상태 열거형
-enum class State { keyUpRep = 0, keyDown = 1, keyDownRep = 2, keyUp = 3 };
+enum class KeyCode { upArrow = 0, downArrow = 1, leftArrow = 2, rightArrow = 3, space = 4, Z = 5 };
 
 class Input
 {
+	//키보드 상태 열거형
+	enum class State { keyUpRep = 0, keyDown = 1, keyDownRep = 2, keyUp = 3 };
+
 private:
 	static State state[9];
 	static int   vKeyCode[9];

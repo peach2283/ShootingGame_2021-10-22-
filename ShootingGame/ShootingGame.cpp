@@ -49,9 +49,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ObjectManager::instantiate(new Player(WIDTH/2-34 , HEIGHT-150)); //플레이어 추가
 
     //적기 테스트하기//
-    ObjectManager::instantiate(new Enemy(150, 50));
-    //ObjectManager::instantiate(new Enemy(0,   50));
-    //ObjectManager::instantiate(new Enemy(300, 50));
+    ObjectManager::instantiate(new Enemy(150, -150));
+    //ObjectManager::instantiate(new Enemy(0,   -150));
+    //ObjectManager::instantiate(new Enemy(300, -150));
 
     // 기본 메시지 루프입니다:
     while (true)
