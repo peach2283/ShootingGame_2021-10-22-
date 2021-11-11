@@ -67,10 +67,15 @@ void Enemy::onTrigger(GameObject * other)
 
 		}else if (hp <= 0) //체력이 모두 소진되었는지를...검사
 		{
+			//적기위치
+			float px = getPx();
+			float py = getPy();
+
 			//적기 폭발
+			instantiate(new EnemyExp(px + 30, py + 30));
 
 			//적기 제거
-			//destroy(this);
+			destroy(this);
 		}
 
 	}
