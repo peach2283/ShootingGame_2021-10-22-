@@ -7,6 +7,8 @@ Player::Player(float px, float py) : Animation("플레이어","", true, px, py)
 
 	this->fireTimer = 0;
 	this->fireDelay = 0.2;
+
+	this->hp = 100;
 }
 
 Player::~Player()
@@ -144,6 +146,28 @@ void Player::fire()  //발사 함수
 			//instantiate(new Laser(px + 37, py - 15));  //오른쪽
 
 			fireTimer = 0;
+		}
+	}
+}
+
+void Player::onTrigger(GameObject* other)
+{
+	string tag = other->getTag();
+
+	if (tag == "적기총알")
+	{
+		hp = hp - 10;
+
+		cout << "플레이어 체력 " << hp << endl;
+
+		if (hp <= 0)
+		{
+		
+			//플레이어 폭발//
+
+
+			//플레이어 제거//
+			destroy(this);
 		}
 	}
 }

@@ -19,6 +19,7 @@
 #include "LaserExp.h"
 #include "EnemyExp.h"
 #include "EnemyBullet.h"
+#include "BulletExp.h"
 
 #define WIDTH  480  //게임장면..가로크기
 #define HEIGHT 800  //게임장면..세로크기
