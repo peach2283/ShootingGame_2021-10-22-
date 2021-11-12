@@ -9,8 +9,13 @@ class Enemy : public Animation
 private:
 	
 	float hp;    //적기 체력
-	float speed; //이동 속력
+	float speed;     //이동 속력
+	float fallSpeed; //추락 속력
+
 	State state; //상태(State) 변수
+
+	float fireTimer;
+	float fireDelay;
 
 public:
 	Enemy(float px, float py);

@@ -19,6 +19,14 @@ GameObject::GameObject(string tag, string name, bool active, float px, float py)
 
 GameObject::~GameObject()
 {
+	//충돌체..제거하기
+	for (int i = 0; i < collider.size(); i++)
+	{
+		BoxCollider2D* c = collider[i];
+		delete c;
+	}
+
+	collider.clear();
 }
 
 //게터, 세타

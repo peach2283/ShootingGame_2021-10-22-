@@ -4,9 +4,14 @@
 Enemy::Enemy(float px, float py) : Animation("적기","",true, px, py)
 {
 	this->hp    = 100; //적기체력
-	this->speed = 100;
+	
+	this->speed		= 100;
+	this->fallSpeed = 200;
+
 	this->state = State::down;
 	
+	this->fireTimer = 0;
+	this->fireDelay = 1;
 }
 
 Enemy::~Enemy()
@@ -41,6 +46,7 @@ void Enemy::start()
 
 void Enemy::update()
 {
+	/////////////이동/추락 스테이트머신///////
 	switch (state)
 	{
 		case State::down:
@@ -88,12 +94,24 @@ void Enemy::update()
 
 		case State::fall:
 		{
-			float dist = speed * Time::deltaTime;
+			float dist = fallSpeed * Time::deltaTime;
 			translate(0, dist);
 		}
 		break;
 	}
 
+	///////////총알발사//////////////
+	fireTimer = fireTimer + Time::deltaTime;
+
+	if (fireTimer >= fireDelay)
+	{
+		float px = getPx();
+		float py = getPy();
+
+		instantiate(new EnemyBullet(px + 86, py + 130));
+
+		fireTimer = 0;
+	}
 }
 
 void Enemy::onTrigger(GameObject * other)
@@ -120,8 +138,14 @@ void Enemy::onTrigger(GameObject * other)
 			//심각한 피해..애니메이션으로 변경
 			play(2);
 
-			//추락상태로..변경하기
-			state = State::fall;
+			if (state != State::fall)
+			{
+				//추락상태로..변경하기
+				state = State::fall;
+
+				//추락중 폭발되지 않고..화면아래로..사라지는 경우.. destroy하기
+				destroy(this, 5);
+			}
 
 		}else if (hp <= 0) //체력이 모두 소진되었는지를...검사
 		{

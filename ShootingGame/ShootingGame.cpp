@@ -50,8 +50,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     //적기 테스트하기//
     ObjectManager::instantiate(new Enemy(150, -150));
-    //ObjectManager::instantiate(new Enemy(0,   -150));
-    //ObjectManager::instantiate(new Enemy(300, -150));
+    ObjectManager::instantiate(new Enemy(0,   -150));
+    ObjectManager::instantiate(new Enemy(300, -150));
 
     // 기본 메시지 루프입니다:
     while (true)
