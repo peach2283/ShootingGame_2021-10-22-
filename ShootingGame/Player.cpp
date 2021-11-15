@@ -158,13 +158,13 @@ void Player::onTrigger(GameObject* other)
 	{
 		hp = hp - 10;
 
-		cout << "플레이어 체력 " << hp << endl;
-
 		if (hp <= 0)
-		{
-		
+		{		
 			//플레이어 폭발//
+			float px = getPx();
+			float py = getPy();
 
+			instantiate(new PlayerExp(px-33, py-27));
 
 			//플레이어 제거//
 			destroy(this);

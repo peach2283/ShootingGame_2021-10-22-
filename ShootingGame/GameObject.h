@@ -61,7 +61,7 @@ public:
 	virtual void draw();
 
 	//기즈모..그리기 함수
-	void onDrawGizmos();
+	virtual void onDrawGizmos();
 
 	//기타 함수//
 	void translate(float x, float y);
