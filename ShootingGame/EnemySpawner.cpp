@@ -2,11 +2,29 @@
 #include "ShootingGame.h"
 
 EnemySpawner::EnemySpawner(float px, float py) : GameObject("","", true, px, py)
-{}
+{
+	this->spawnTimer = 0;
+	this->spawnDelay = 1;
+}
 
 EnemySpawner::~EnemySpawner()
 {}
 
+void EnemySpawner::update()
+{
+	spawnTimer = spawnTimer + Time::deltaTime;
+
+	if (spawnTimer >= spawnDelay)
+	{
+		//적기스폰하기//
+		float px = getPx();
+		float py = getPy();
+
+		instantiate(new Enemy(px - 95, py - 137));
+
+		spawnTimer = 0;
+	}
+}
 
 void EnemySpawner::onDrawGizmos()
 {

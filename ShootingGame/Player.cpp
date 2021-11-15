@@ -156,7 +156,7 @@ void Player::onTrigger(GameObject* other)
 
 	if (tag == "Àû±âÃÑ¾Ë")
 	{
-		hp = hp - 10;
+		//hp = hp - 10;
 
 		if (hp <= 0)
 		{		

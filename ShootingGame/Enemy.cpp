@@ -67,7 +67,7 @@ void Enemy::update()
 		case State::left:
 		{
 			float dist = speed * Time::deltaTime;
-			//translate(-dist, 0);
+			translate(-dist, 0);
 
 			float px = getPx();
 
@@ -81,7 +81,7 @@ void Enemy::update()
 		case State::right:
 		{
 			float dist = speed * Time::deltaTime;
-			//translate(dist, 0);
+			translate(dist, 0);
 
 			float px = getPx();
 
