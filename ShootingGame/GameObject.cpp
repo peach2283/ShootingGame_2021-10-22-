@@ -175,6 +175,9 @@ void GameObject::onTrigger(GameObject * other)
 {
 }
 
+void GameObject::onDestroy()
+{}
+
 void GameObject::instantiate(GameObject* o)
 {
 	ObjectManager::instantiate(o);

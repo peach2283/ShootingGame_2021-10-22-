@@ -43,6 +43,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     initGraphic(hWnd, 0, 0, WIDTH, HEIGHT);  //그래픽 초기화
     Time::init();                            //타이머 초기화
+    Random::init();                          //랜덤 초기화
 
     //게임오브젝트..추가하기//
     ObjectManager::instantiate(new GameBG(0          ,          0)); //게임배경 추가

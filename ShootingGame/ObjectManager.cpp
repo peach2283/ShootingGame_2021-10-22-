@@ -100,6 +100,9 @@ void ObjectManager::clearDeadObject()
 			gameObject.erase(gameObject.begin() + i);
 			i--;
 
+			//게임오브젝트에...객체가 destroy됨을 알림
+			o->onDestroy();
+
 			//객체 delete 하기
 			delete o;
 		}

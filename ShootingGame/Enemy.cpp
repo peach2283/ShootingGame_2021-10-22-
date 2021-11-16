@@ -157,7 +157,7 @@ void Enemy::onTrigger(GameObject * other)
 			instantiate(new EnemyExp(px + 30, py + 30));
 
 			//적기 제거
-			destroy(this);
+			destroy(this);			
 		}
 
 	}
@@ -165,4 +165,10 @@ void Enemy::onTrigger(GameObject * other)
 	{
 		
 	}
+}
+
+void Enemy::onDestroy()
+{
+	//적기제거 카운트 증가
+	GameManager::addEnemyDestroyCount();
 }

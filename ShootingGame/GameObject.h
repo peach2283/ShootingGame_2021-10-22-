@@ -75,6 +75,9 @@ public:
 	//충돌(Trigger) 이벤트 가상 함수
 	virtual void onTrigger(GameObject * other);
 
+	//제거(Destroy) 이벤트 
+	virtual void onDestroy();
+
 	//객체 생성 및 제거함수
 	void instantiate(GameObject* o);
 	void destroy(GameObject* o);

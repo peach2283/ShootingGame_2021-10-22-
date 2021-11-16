@@ -26,4 +26,7 @@ public:
 
 	//충돌이벤트..오버라이딩
 	void onTrigger(GameObject * other);
+
+	//제거이벤트..오버라이딩
+	void onDestroy();
 };

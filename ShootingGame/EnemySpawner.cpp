@@ -16,13 +16,29 @@ void EnemySpawner::update()
 
 	if (spawnTimer >= spawnDelay)
 	{
-		//적기스폰하기//
-		float px = getPx();
-		float py = getPy();
+		//화면에..남아있는 적기갯수
+		int spawnCount   = GameManager::getEnemySpawnCount();   //스폰된 적기갯수
+		int destroyCount = GameManager::getEnemyDestroyCount(); //제거된 적기갯수
 
-		instantiate(new Enemy(px - 95, py - 137));
+		int leftCount = spawnCount - destroyCount;  //현재 화면에..남은 적기갯수
+		
+		if (leftCount < 5)
+		{
+			//적기스폰하기//
+			float px = getPx();
+			float py = getPy();
 
-		spawnTimer = 0;
+			int spawnPos = Random::range(0, 3); //0,1,2
+
+			cout << "스폰 랜던 위치 " << spawnPos << endl;
+
+			instantiate(new Enemy(px - 95, py - 137));
+
+			spawnTimer = 0;
+
+			//적기스폰갯수..증가시키기(공유를 위해서..게임매니저의 카운트변수)
+			GameManager::addEnemySpawnCount();
+		}
 	}
 }
 
