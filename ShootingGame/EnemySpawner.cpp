@@ -22,17 +22,16 @@ void EnemySpawner::update()
 
 		int leftCount = spawnCount - destroyCount;  //현재 화면에..남은 적기갯수
 		
-		if (leftCount < 5)
+		if (leftCount < 2)
 		{
 			//적기스폰하기//
 			float px = getPx();
 			float py = getPy();
 
-			int spawnPos = Random::range(0, 3); //0,1,2
+			int    spawnIdx		  = Random::range(0, 3); //0,1,2
+			float  spawnPos[3][2] = { {px - 95 - 120, py - 137}, {px - 95      , py - 137}, {px - 95 + 120, py - 137} };
 
-			cout << "스폰 랜던 위치 " << spawnPos << endl;
-
-			instantiate(new Enemy(px - 95, py - 137));
+			instantiate(new Enemy(spawnPos[spawnIdx][0], spawnPos[spawnIdx][1]));
 
 			spawnTimer = 0;
 

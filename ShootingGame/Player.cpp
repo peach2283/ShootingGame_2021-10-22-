@@ -156,18 +156,27 @@ void Player::onTrigger(GameObject* other)
 
 	if (tag == "적기총알")
 	{
-		//hp = hp - 10;
+		damage(10);
+	}
+	else if (tag == "적기")
+	{
+		damage(50);
+	}
+}
 
-		if (hp <= 0)
-		{		
-			//플레이어 폭발//
-			float px = getPx();
-			float py = getPy();
+void Player::damage(float amount)
+{
+	hp = hp - amount;
 
-			instantiate(new PlayerExp(px-33, py-27));
+	if (hp <= 0)
+	{
+		//플레이어 폭발//
+		float px = getPx();
+		float py = getPy();
 
-			//플레이어 제거//
-			destroy(this);
-		}
+		instantiate(new PlayerExp(px - 33, py - 27));
+
+		//플레이어 제거//
+		destroy(this);
 	}
 }

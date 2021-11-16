@@ -24,4 +24,6 @@ public:
 	void fire();  //발사 함수
 
 	void onTrigger(GameObject* other);
+
+	void damage(float amount);
 };

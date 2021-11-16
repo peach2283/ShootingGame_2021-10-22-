@@ -12,6 +12,8 @@ Enemy::Enemy(float px, float py) : Animation("적기","",true, px, py)
 	
 	this->fireTimer = 0;
 	this->fireDelay = 1;
+
+	this->downStopVar = Random::range(-80, 80);
 }
 
 Enemy::~Enemy()
@@ -56,11 +58,10 @@ void Enemy::update()
 
 			float py = getPy();
 
-			if (py >= 60)
+			if (py >= 60 + downStopVar)
 			{
 				state = State::left;
 			}
-
 		}
 		break;
 
@@ -148,23 +149,28 @@ void Enemy::onTrigger(GameObject * other)
 			}
 
 		}else if (hp <= 0) //체력이 모두 소진되었는지를...검사
-		{
-			//적기위치
-			float px = getPx();
-			float py = getPy();
-
-			//적기 폭발
-			instantiate(new EnemyExp(px + 30, py + 30));
-
-			//적기 제거
-			destroy(this);			
+		{				
+			explode();
 		}
 
 	}
 	else if (tag == "플레이어")
 	{
-		
+		explode();
 	}
+}
+
+void Enemy::explode()
+{
+	//적기위치
+	float px = getPx();
+	float py = getPy();
+
+	//적기 폭발
+	instantiate(new EnemyExp(px + 30, py + 30));
+
+	//적기 제거
+	destroy(this);
 }
 
 void Enemy::onDestroy()

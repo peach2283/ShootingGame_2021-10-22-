@@ -17,7 +17,10 @@ private:
 	float fireTimer;
 	float fireDelay;
 
+	int downStopVar;  //down 상태에서 left상태로..전이되는 높이 변화랜덤값
+
 public:
+
 	Enemy(float px, float py);
 	~Enemy();
 
@@ -29,4 +32,7 @@ public:
 
 	//제거이벤트..오버라이딩
 	void onDestroy();
+
+	//적기 폭발 함수
+	void explode();
 };

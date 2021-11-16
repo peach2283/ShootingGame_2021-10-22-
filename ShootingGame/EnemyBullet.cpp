@@ -13,6 +13,9 @@ void EnemyBullet::start()
 {
 	setImage("Asset/총알1.bmp");
 	addBoxCollider2D(new BoxCollider2D(0, 0, 16, 15));
+
+	//적기 총알 라이프타임//
+	destroy(this, 10);
 }
 
 void EnemyBullet::update()
