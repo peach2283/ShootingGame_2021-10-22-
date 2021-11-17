@@ -46,11 +46,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     Random::init();                          //랜덤 초기화
 
     //게임오브젝트..추가하기//
-    ObjectManager::instantiate(new GameBG(0          ,          0)); //게임배경 추가
-    ObjectManager::instantiate(new Player(WIDTH/2-34 , HEIGHT-150)); //플레이어 추가
+    ObjectManager::instantiate(new GameBG(0          ,           0)); //게임배경 추가
+    ObjectManager::instantiate(new Player(WIDTH/2-34 , HEIGHT + 50)); //플레이어 추가
 
     //적기 스포너 추가하기//
     ObjectManager::instantiate(new EnemySpawner(WIDTH/2, 0));
+
+    //폭탄 테스트 하기
+    //ObjectManager::instantiate(new Bomb(200, 400));
 
     // 기본 메시지 루프입니다:
     while (true)

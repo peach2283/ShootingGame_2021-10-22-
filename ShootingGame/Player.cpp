@@ -48,20 +48,28 @@ void Player::update()
 {
 	switch (state)
 	{
-		case State::up  :
+		case State::up  :  //플레이어 등장 상태
 		{
-	
+			float dist = speed * Time::deltaTime;
+			translate(0, -dist);
+
+			float py = getPy();
+
+			if (py <= HEIGHT - 150)
+			{
+				state = State::control;
+			}
 		}
 		break;
 
-		case State::control :
+		case State::control : //플레이어 키입력 콘트롤 상태
 		{
-		
+			move();
+			fire();
 		}
 		break;
 	}
-	//move();
-	//fire();
+
 }
 
 void Player::move()  //이동 함수
@@ -163,6 +171,16 @@ void Player::fire()  //발사 함수
 			fireTimer = 0;
 		}
 	}
+
+	//폭탄 발사하기
+	if (Input::getKeyDown(KeyCode::Z) == true)
+	{
+		float px = getPx();
+		float py = getPy();
+
+		instantiate(new Bomb(px+15, py-15));
+	}
+
 }
 
 void Player::onTrigger(GameObject* other)
@@ -181,7 +199,7 @@ void Player::onTrigger(GameObject* other)
 
 void Player::damage(float amount)
 {
-	hp = hp - amount;
+	//hp = hp - amount;
 
 	if (hp <= 0)
 	{
