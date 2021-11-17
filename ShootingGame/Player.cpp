@@ -8,7 +8,8 @@ Player::Player(float px, float py) : Animation("플레이어","", true, px, py)
 	this->fireTimer = 0;
 	this->fireDelay = 0.2;
 
-	this->hp = 100;
+	this->hp	= 100;
+	this->state = State::up;
 }
 
 Player::~Player()
@@ -45,8 +46,22 @@ void Player::start()
 
 void Player::update()
 {
-	move();
-	fire();
+	switch (state)
+	{
+		case State::up  :
+		{
+	
+		}
+		break;
+
+		case State::control :
+		{
+		
+		}
+		break;
+	}
+	//move();
+	//fire();
 }
 
 void Player::move()  //이동 함수
@@ -178,5 +193,8 @@ void Player::damage(float amount)
 
 		//플레이어 제거//
 		destroy(this);
+
+		//플레이어 리스폰 시도하기
+		GameManager::reSpawnPlayer();
 	}
 }

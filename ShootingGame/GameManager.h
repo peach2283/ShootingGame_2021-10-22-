@@ -6,6 +6,8 @@ private:
 	static int enemySpawnCount;   //적기 스폰 카운트
 	static int enemyDestroyCount; //적기 제거 카운트
 
+	static int playerCount; //게임에서.. 남은 플레이어 카운트
+
 public:
 
 	static void addEnemySpawnCount();
@@ -13,4 +15,6 @@ public:
 
 	static int getEnemySpawnCount();
 	static int getEnemyDestroyCount();
+
+	static void reSpawnPlayer(); 
 };
