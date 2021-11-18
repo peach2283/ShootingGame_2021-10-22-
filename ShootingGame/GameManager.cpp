@@ -33,7 +33,7 @@ void GameManager::reSpawnPlayer()
 	if (playerCount > 0)
 	{
 		//플레이어 리스폰하기
-		ObjectManager::instantiate(new Player(WIDTH / 2 - 34, HEIGHT + 50)); //플레이어 추가
+		ObjectManager::instantiate(new Player(WIDTH / 2 - 34, HEIGHT + 50), 1); //플레이어 추가 - 1번 레이어
 	}
 	else {
 		//게임오버

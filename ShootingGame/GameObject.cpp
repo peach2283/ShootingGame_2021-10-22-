@@ -178,9 +178,9 @@ void GameObject::onTrigger(GameObject * other)
 void GameObject::onDestroy()
 {}
 
-void GameObject::instantiate(GameObject* o)
+void GameObject::instantiate(GameObject* o, int layer)
 {
-	ObjectManager::instantiate(o);
+	ObjectManager::instantiate(o, layer);
 }
 
 void GameObject::destroy(GameObject* o)

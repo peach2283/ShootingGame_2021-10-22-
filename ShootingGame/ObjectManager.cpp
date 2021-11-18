@@ -1,11 +1,11 @@
 #include "framework.h"
 #include "ShootingGame.h"
 
-vector<GameObject* > ObjectManager::gameObject;
+vector<GameObject* > ObjectManager::gameObject[10];
 
-void ObjectManager::instantiate(GameObject* o)
+void ObjectManager::instantiate(GameObject* o, int layer)
 {
-	gameObject.push_back(o);
+	gameObject[layer].push_back(o);
 	o->start();
 }
 
@@ -23,22 +23,29 @@ void ObjectManager::destroy(GameObject* o, float lifeTime)
 
 void ObjectManager::update()
 {
-	for (int i = 0; i < gameObject.size(); i++)
+	for (int j = 0; j < 10; j++)
 	{
-		gameObject[i]->update();
+		for (int i = 0; i < gameObject[j].size(); i++)
+		{
+			gameObject[j][i]->update();
+		}
 	}
 }
 
 void ObjectManager::checkLifeTime()
 {
-	for (int i = 0; i < gameObject.size(); i++)
+	for (int j = 0; j < 10; j++)
 	{
-		gameObject[i]->subLifeTime();
+		for (int i = 0; i < gameObject[j].size(); i++)
+		{
+			gameObject[j][i]->subLifeTime();
+		}
 	}
 }
 
 void ObjectManager::checkCollision()
 {
+	/************************************************
 	for (int i = 0; i < gameObject.size(); i++)
 	{
 		for (int j = 0; j < gameObject.size(); j++)
@@ -85,43 +92,56 @@ void ObjectManager::checkCollision()
 			}
 		}		
 	}
+	***************************************************/
 }
 
 void ObjectManager::clearDeadObject()
 {
-	/////////////////////삭제로..표시된...객체를 제거함///////////
-	for (int i = 0; i < gameObject.size(); i++)
+	for (int j = 0; j < 10; j++)
 	{
-		if (gameObject[i]->getIsDead() == true)  //삭제로..표시된 객체
+		/////////////////////삭제로..표시된...객체를 제거함///////////
+		for (int i = 0; i < gameObject[j].size(); i++)
 		{
-			GameObject* o = gameObject[i];
+			if (gameObject[j][i]->getIsDead() == true)  //삭제로..표시된 객체
+			{
+				GameObject* o = gameObject[j][i];
 
-			//stl vector 목록에서 제거
-			gameObject.erase(gameObject.begin() + i);
-			i--;
+				//stl vector 목록에서 제거
+				gameObject[j].erase(gameObject[j].begin() + i);
+				i--;
 
-			//게임오브젝트에...객체가 destroy됨을 알림
-			o->onDestroy();
+				//게임오브젝트에...객체가 destroy됨을 알림
+				o->onDestroy();
 
-			//객체 delete 하기
-			delete o;
+				//객체 delete 하기
+				delete o;
+			}
 		}
 	}
 }
 
 void ObjectManager::draw()
 {
-	for (int i = 0; i < gameObject.size(); i++)
+	for (int j = 0; j < 10; j++)
 	{
-		gameObject[i]->draw();          //이미지 그리기
-		gameObject[i]->onDrawGizmos();  //기즈모 그리기
+		for (int i = 0; i < gameObject[j].size(); i++)
+		{
+			gameObject[j][i]->draw();          //이미지 그리기
+			gameObject[j][i]->onDrawGizmos();  //기즈모 그리기
+		}
 	}
 }
 
 void ObjectManager::clear()
 {
-	for (int i = 0; i <gameObject.size(); i++)
+	for (int j = 0; j < 10; j++)
 	{
-		delete gameObject[i];
+		for (int i = 0; i < gameObject[j].size(); i++)
+		{
+			delete gameObject[j][i];
+		}
+
+		//j번째 ... stl vector 를 clear해서..저장공간을 모두 제거함
+		gameObject[j].clear();
 	}
 }

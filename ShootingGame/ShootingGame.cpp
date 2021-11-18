@@ -45,9 +45,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     Time::init();                            //타이머 초기화
     Random::init();                          //랜덤 초기화
 
-    //게임오브젝트..추가하기//
-    ObjectManager::instantiate(new GameBG(0          ,           0)); //게임배경 추가
-    ObjectManager::instantiate(new Player(WIDTH/2-34 , HEIGHT + 50)); //플레이어 추가
+    //게임오브젝트..추가하기//    
+    ObjectManager::instantiate(new GameBG(0, 0));                           //게임배경 추가
+    ObjectManager::instantiate(new Player(WIDTH / 2 - 34, HEIGHT + 50), 1); //플레이어 추가 - 1번 레이어
 
     //적기 스포너 추가하기//
     ObjectManager::instantiate(new EnemySpawner(WIDTH/2, 0));
