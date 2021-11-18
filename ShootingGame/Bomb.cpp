@@ -28,5 +28,9 @@ void Bomb::update()
 
 void Bomb::onAnimationEnd()
 {
-	destroy(this);
+	float px = getPx();
+	float py = getPy();
+
+	destroy(this);					          //气藕 力芭
+	instantiate(new BombExp(px-52, py-52));   //气藕捞 气惯
 }

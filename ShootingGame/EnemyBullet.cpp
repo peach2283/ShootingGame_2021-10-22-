@@ -28,7 +28,7 @@ void EnemyBullet::onTrigger(GameObject* other)
 {
 	string tag = other->getTag();
 
-	if (tag == "플레이어")
+	if (tag == "플레이어" || tag == "폭탄폭발")
 	{
 		//적기 총알 폭발//
 		float px = getPx();
