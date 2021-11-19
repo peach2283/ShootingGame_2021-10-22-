@@ -21,6 +21,7 @@ public:
 	static void update();
 	static void checkLifeTime();
 	static void checkCollision();
+	static void checkObjectCollision(GameObject* objI, GameObject* objJ);
 	static void clearDeadObject();
 	static void draw();
 	static void clear();

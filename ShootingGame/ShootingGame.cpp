@@ -50,10 +50,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ObjectManager::instantiate(new Player(WIDTH / 2 - 34, HEIGHT + 50), 1); //플레이어 추가 - 1번 레이어
 
     //적기 스포너 추가하기//
-    ObjectManager::instantiate(new EnemySpawner(WIDTH/2, 0));
+    //ObjectManager::instantiate(new EnemySpawner(WIDTH/2, 0));
 
-    //폭탄 테스트 하기
-    //ObjectManager::instantiate(new Bomb(200, 400));
+    //방패 테스트하기
+    ObjectManager::instantiate(new Shield(200, 100), 2);
 
     // 기본 메시지 루프입니다:
     while (true)

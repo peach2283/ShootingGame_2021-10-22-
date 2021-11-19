@@ -57,6 +57,14 @@ void Animation::addImage(const char* fileName, int x, int y, int width, int heig
 	image[clip].push_back(img);
 }
 
+void Animation::addImage(const char* fileName, int clip)
+{
+	Image img;
+
+	BMP::readBMP(fileName, &img);
+	image[clip].push_back(img);
+}
+
 void Animation::draw()
 {
 	float px = getPx();

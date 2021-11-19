@@ -29,6 +29,7 @@ public:
 
 	//애니메이션 이미지 로드함수//
 	void addImage(const char* fileName, int x, int y, int width, int height, int clip);
+	void addImage(const char* fileName, int clip);
 
 	//재생중인 애니메이션..변경하기//
 	void play(int clip);
