@@ -31,6 +31,9 @@ private:
 	//2D 박스콜라이더 목록//
 	vector<BoxCollider2D*> collider;
 
+	//게임오브젝트 목록//
+	vector<GameObject*> childObject;
+
 public:
 	//생성자, 소멸자
 	GameObject(string tag, string name, bool active, float px, float py);
@@ -71,6 +74,9 @@ public:
 
 	//2D 충돌체 게터
 	vector<BoxCollider2D *> getCollider();
+
+	//자식오브젝트 추가함수//
+	void addChidObject(GameObject* obj, int layer=0);
 
 	//충돌(Trigger) 이벤트 가상 함수
 	virtual void onTrigger(GameObject * other);

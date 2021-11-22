@@ -28,7 +28,7 @@ void EnemyBullet::onTrigger(GameObject* other)
 {
 	string tag = other->getTag();
 
-	if (tag == "敲饭捞绢" || tag == "气藕气惯")
+	if (tag == "敲饭捞绢" || tag == "气藕气惯" || tag == "规菩")
 	{
 		//利扁 醚舅 气惯//
 		float px = getPx();

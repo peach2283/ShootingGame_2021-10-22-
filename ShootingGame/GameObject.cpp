@@ -93,6 +93,12 @@ void GameObject::setPx(float px)
 	{
 		collider[i]->translate(dx, 0);
 	}
+
+	//자식객체..좌표를 이동//
+	for (int i = 0; i < childObject.size(); i++)
+	{
+		childObject[i]->translate(dx, 0);
+	}
 }
 
 void GameObject::setPy(float py)
@@ -105,11 +111,23 @@ void GameObject::setPy(float py)
 	{
 		collider[i]->translate(0, dy);
 	}
+
+	for (int i = 0; i < childObject.size(); i++)
+	{
+		childObject[i]->translate(0, dy);
+	}
 }
 
 void GameObject::setIsDead(bool isDead)
 {
+    //게임오브젝트..제거 표시	
 	this->isDead = isDead;
+
+	//자식객체들도..제거표시함
+	for (int i = 0; i < childObject.size(); i++)
+	{
+		childObject[i]->setIsDead(isDead);
+	}
 }
 
 void GameObject::setLifeTime(float lifeTime)
@@ -155,6 +173,12 @@ void GameObject::translate(float x, float y)
 	{
 		collider[i]->translate(x, y);
 	}
+
+	//자식오브젝트...이동시키기//
+	for (int i = 0; i < childObject.size(); i++)
+	{
+		childObject[i]->translate(x, y);
+	}
 }
 
 void GameObject::addBoxCollider2D(BoxCollider2D* box)
@@ -169,6 +193,14 @@ void GameObject::addBoxCollider2D(BoxCollider2D* box)
 vector<BoxCollider2D*> GameObject::getCollider()
 {
 	return collider; 
+}
+
+void GameObject::addChidObject(GameObject* obj, int layer)
+{
+	obj->translate(px, py);
+
+	childObject.push_back(obj);  //자식목록에..추가하기
+	instantiate(obj, layer);     //ObjectManager에 추가하기
 }
 
 void GameObject::onTrigger(GameObject * other)

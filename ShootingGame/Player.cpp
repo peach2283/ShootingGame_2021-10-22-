@@ -42,6 +42,9 @@ void Player::start()
 	//충돌체 추가하기//
 	addBoxCollider2D(new BoxCollider2D(24, 5,  14, 65));
 	addBoxCollider2D(new BoxCollider2D(5 , 42, 52, 15));
+
+	//방패 자식객체 추가하기
+	addChidObject(new Shield(-12, -10), 2);
 }
 
 void Player::update()
@@ -199,7 +202,7 @@ void Player::onTrigger(GameObject* other)
 
 void Player::damage(float amount)
 {
-	//hp = hp - amount;
+	hp = hp - amount;
 
 	if (hp <= 0)
 	{
