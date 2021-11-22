@@ -153,14 +153,10 @@ void Enemy::onTrigger(GameObject * other)
 			explode();
 		}
 	}
-	else if (tag == "ÇÃ·¹ÀÌ¾î")
+	else if (tag == "ÇÃ·¹ÀÌ¾î" || tag == "ÆøÅºÆø¹ß" || tag == "¹æÆÐ")
 	{
 		explode();
-	}
-	else if (tag == "ÆøÅºÆø¹ß")
-	{
-		explode();
-	}
+	}	
 }
 
 void Enemy::explode()

@@ -37,6 +37,6 @@ void GameManager::reSpawnPlayer()
 	}
 	else {
 		//게임오버
-		ObjectManager::instantiate(new GameOver((WIDTH - 420) / 2, 200));
+		ObjectManager::instantiate(new GameOver((WIDTH - 420) / 2, 200) , 9); //UI는 가장위의 레이어 할당
 	}
 }

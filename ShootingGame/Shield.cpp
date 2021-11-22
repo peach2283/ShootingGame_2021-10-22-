@@ -1,8 +1,10 @@
 #include "framework.h"
 #include "ShootingGame.h"
 
-Shield::Shield(float px, float py) : Animation("방패", "", true, px, py)
-{}
+Shield::Shield(float px, float py) : Animation("방패", "", true , px, py)
+{
+	this->activeTimer = 5;
+}
 
 Shield::~Shield()
 {}
@@ -16,4 +18,15 @@ void Shield::start()
 
 	//충돌체 추가
 	addBoxCollider2D(new BoxCollider2D(0, 0, 90, 90));
+}
+
+void Shield::update()
+{
+	activeTimer = activeTimer - Time::deltaTime;
+
+	if (activeTimer <= 0)
+	{
+		//방패 비활성화 하기
+		setActive(false);
+	}
 }

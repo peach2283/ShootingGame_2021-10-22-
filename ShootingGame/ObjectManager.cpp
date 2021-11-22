@@ -45,40 +45,42 @@ void ObjectManager::checkLifeTime()
 
 void ObjectManager::checkObjectCollision(GameObject* objI, GameObject* objJ)
 {
-	//GameObject* objI = gameObject[layerI][i];  //layerI에서 i 번째...게임오브젝트
-	//GameObject* objJ = gameObject[layerJ][j];  //layerJ에서 j 번째...게임오브젝트
 
-	vector<BoxCollider2D*> colI = objI->getCollider();
-	vector<BoxCollider2D*> colJ = objJ->getCollider();
-
-	for (int ii = 0; ii < colI.size(); ii++)
+	if (objI->getActive() == true && objJ->getActive() == true)
 	{
-		for (int jj = 0; jj < colJ.size(); jj++)
+
+		vector<BoxCollider2D*> colI = objI->getCollider();
+		vector<BoxCollider2D*> colJ = objJ->getCollider();
+
+		for (int ii = 0; ii < colI.size(); ii++)
 		{
-			//colI[ii]  충돌체와 colJ[jj] 충돌체와...충돌검사를 실시함
-			//충돌 박스 좌표 구하기//
-			float x, y, width, height;
-			float x0I, y0I, x1I, y1I;    //objI(colI)의 박스 충돌체 좌표
-			float x0J, y0J, x1J, y1J;    //objJ(colJ)의 박스 충돌체 좌표
-
-			colI[ii]->getBoudingBox(x, y, width, height);
-			x0I = x;
-			y0I = y;
-			x1I = x0I + width;
-			y1I = y0I + height;
-
-
-			colJ[jj]->getBoudingBox(x, y, width, height);
-			x0J = x;
-			y0J = y;
-			x1J = x0J + width;
-			y1J = y0J + height;
-
-			if (y0I < y1J && y1I > y0J && x1I > x0J && x0I < x1J)
+			for (int jj = 0; jj < colJ.size(); jj++)
 			{
-				//objI 하고 objJ ... 게임오브젝트가 충돌함
-				objI->onTrigger(objJ); //objI의 함수를 이용해서..objJ와 충돌(Trigger)이 발생했음을..알림
-				objJ->onTrigger(objI); //objJ의 함수를 이용해서..objI와 충돌(Trigger)이 발생했음을..알림
+				//colI[ii]  충돌체와 colJ[jj] 충돌체와...충돌검사를 실시함
+				//충돌 박스 좌표 구하기//
+				float x, y, width, height;
+				float x0I, y0I, x1I, y1I;    //objI(colI)의 박스 충돌체 좌표
+				float x0J, y0J, x1J, y1J;    //objJ(colJ)의 박스 충돌체 좌표
+
+				colI[ii]->getBoudingBox(x, y, width, height);
+				x0I = x;
+				y0I = y;
+				x1I = x0I + width;
+				y1I = y0I + height;
+
+
+				colJ[jj]->getBoudingBox(x, y, width, height);
+				x0J = x;
+				y0J = y;
+				x1J = x0J + width;
+				y1J = y0J + height;
+
+				if (y0I < y1J && y1I > y0J && x1I > x0J && x0I < x1J)
+				{
+					//objI 하고 objJ ... 게임오브젝트가 충돌함
+					objI->onTrigger(objJ); //objI의 함수를 이용해서..objJ와 충돌(Trigger)이 발생했음을..알림
+					objJ->onTrigger(objI); //objJ의 함수를 이용해서..objI와 충돌(Trigger)이 발생했음을..알림
+				}
 			}
 		}
 	}
@@ -167,8 +169,11 @@ void ObjectManager::draw()
 	{
 		for (int i = 0; i < gameObject[j].size(); i++)
 		{
-			gameObject[j][i]->draw();          //이미지 그리기
-			gameObject[j][i]->onDrawGizmos();  //기즈모 그리기
+			if (gameObject[j][i]->getActive() == true) //활성화된 객체만 그림
+			{
+				gameObject[j][i]->draw();          //이미지 그리기
+				gameObject[j][i]->onDrawGizmos();  //기즈모 그리기
+			}
 		}
 	}
 }
