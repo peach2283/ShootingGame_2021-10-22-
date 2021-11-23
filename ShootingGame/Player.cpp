@@ -60,7 +60,29 @@ void Player::update()
 
 			if (py <= HEIGHT - 150)
 			{
-				state = State::control;
+				state = State::control;              //control 상태전이
+				 
+				/************방패 숨기기******************/
+				//GameObject* shield = find("방패");    //방패자식객체 찾기
+
+				//if (shield != nullptr)
+				//{
+				//	shield->setActive(false);             //방패자식객체..비활성화하기  
+				//}
+				//else {
+				//	cout << "방패 자식객체를 찾을수 없음" << endl;
+				//}
+
+				/**************방패제거******************/
+				GameObject * shield=find("방패");
+
+				if (shield != nullptr)
+				{
+					destroy(shield);
+				}
+				else {
+					cout << "방패 자식객체를 찾을 수 없음" << endl;
+				}
 			}
 		}
 		break;

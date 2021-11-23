@@ -15,6 +15,8 @@ GameObject::GameObject(string tag, string name, bool active, float px, float py)
 
 	this->lifeTime    = 0;
 	this->useLifeTime = false;
+
+	this->parent = nullptr;
 }
 
 GameObject::~GameObject()
@@ -197,6 +199,8 @@ vector<BoxCollider2D*> GameObject::getCollider()
 
 void GameObject::addChidObject(GameObject* obj, int layer)
 {
+	//this, childObject목록체..obj가 자식으로..추가됨...
+	obj->parent = this;
 	obj->translate(px, py);
 
 	childObject.push_back(obj);  //자식목록에..추가하기
@@ -217,7 +221,26 @@ void GameObject::instantiate(GameObject* o, int layer)
 
 void GameObject::destroy(GameObject* o)
 {
-	ObjectManager::destroy(o);
+	if (o->parent == nullptr)
+	{
+		//[1]삭제 객체가 자식이 아닌경우
+		ObjectManager::destroy(o);
+	}
+	else {
+		//[2]삭제 객체가 자식인 경우
+		//(1)부모객체의 자식목록에서..제거
+		for (int i = 0; i < o->parent->childObject.size(); i++)
+		{
+			if (o->parent->childObject[i] == o)
+			{
+				o->parent->childObject.erase( o->parent->childObject.begin() + i);
+				i--;
+			}
+		}
+
+		//(2)오브젝트매니저에서..삭제하기
+		ObjectManager::destroy(o);
+	}
 }
 
 void GameObject::destroy(GameObject* o, float lifeTime)
@@ -236,4 +259,18 @@ void GameObject::subLifeTime()
 			this->isDead = true;  //제거 대상으로..표시함
 		}
 	}
+}
+
+GameObject* GameObject::find(string name)
+{
+	for (int i = 0; i < childObject.size(); i++)
+	{
+		if (childObject[i]->getName() == name)
+		{
+			return childObject[i];
+		}
+	}
+
+	//이름으로..자식객체를 찾지못함//
+	return nullptr;
 }

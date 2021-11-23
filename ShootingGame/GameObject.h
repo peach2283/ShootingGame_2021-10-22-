@@ -34,6 +34,9 @@ private:
 	//게임오브젝트 목록//
 	vector<GameObject*> childObject;
 
+	//부목 객체를 저장하는 변수
+	GameObject* parent;
+
 public:
 	//생성자, 소멸자
 	GameObject(string tag, string name, bool active, float px, float py);
@@ -91,4 +94,7 @@ public:
 
 	//라이프타임 줄이기 함수
 	void subLifeTime();
+
+	//이름으로 자식객체 찾기
+	GameObject* find(string name);
 };
