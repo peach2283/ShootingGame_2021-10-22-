@@ -8,8 +8,9 @@ Player::Player(float px, float py) : Animation("플레이어","", true, px, py)
 	this->fireTimer = 0;
 	this->fireDelay = 0.2;
 
-	this->hp	= 100;
-	this->state = State::up;
+	this->hp		= 100;
+	this->state		= State::up;
+	this->fireCount = 1;
 }
 
 Player::~Player()
@@ -181,17 +182,24 @@ void Player::fire()  //발사 함수
 			float px = getPx();
 			float py = getPy();
 
-			///한발 발사하기//
-			instantiate(new Laser(px + 29, py - 20));
-
-			///두발 발사하기//
-			//instantiate(new Laser(px + 24, py - 20));
-			//instantiate(new Laser(px + 34, py - 20));
-
-			//세발 발사하기//
-			//instantiate(new Laser(px + 21, py - 15));  //왼쪽
-			//instantiate(new Laser(px + 29, py - 25));  //가운데..
-			//instantiate(new Laser(px + 37, py - 15));  //오른쪽
+			if (fireCount == 1)
+			{
+				///한발 발사하기//
+				instantiate(new Laser(px + 29, py - 20));
+			}
+			else if (fireCount == 2)
+			{
+				///두발 발사하기//
+				instantiate(new Laser(px + 24, py - 20));
+				instantiate(new Laser(px + 34, py - 20));
+			}
+			else if (fireCount == 3)
+			{
+				//세발 발사하기//
+				instantiate(new Laser(px + 21, py - 15));  //왼쪽
+				instantiate(new Laser(px + 29, py - 25));  //가운데..
+				instantiate(new Laser(px + 37, py - 15));  //오른쪽
+			}
 
 			fireTimer = 0;
 		}
@@ -212,13 +220,20 @@ void Player::onTrigger(GameObject* other)
 {
 	string tag = other->getTag();
 
-	if (tag == "적기총알")
+	if (tag == "적기총알") 
 	{
 		damage(10);
 	}
 	else if (tag == "적기")
 	{
 		damage(50);
+	}
+	else if (tag == "총알아이템")  //플레이어 레이저발사 갯수 증가 아이템
+	{
+		if (fireCount < 3)
+		{
+			fireCount++;
+		}
 	}
 }
 
