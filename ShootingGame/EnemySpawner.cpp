@@ -37,6 +37,15 @@ void EnemySpawner::update()
 
 			//적기스폰갯수..증가시키기(공유를 위해서..게임매니저의 카운트변수)
 			GameManager::addEnemySpawnCount();
+
+			//생성된 적기 갯수 체크하기
+			if (GameManager::getEnemySpawnCount() >= MAX_ENEMY)
+			{
+				cout << "=====보스 스폰하기====" << endl;
+
+				destroy(this);  //스포너 제거하기
+			}
+
 		}
 	}
 }

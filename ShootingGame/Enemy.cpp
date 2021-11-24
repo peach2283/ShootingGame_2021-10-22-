@@ -14,7 +14,8 @@ Enemy::Enemy(float px, float py, int num) : Animation("적기","",true, px, py)
 	this->fireDelay = 1;
 
 	this->downStopVar = Random::range(-80, 80);
-	this->num		  = num;
+	this->num		    = num;
+	this->isItemDropped = false;
 }
 
 Enemy::~Enemy()
@@ -172,18 +173,27 @@ void Enemy::explode()
 	//적기 제거
 	destroy(this);
 
-	//아이템 생성하기
-	/**확률사용
-	int r = Random::range(0, 100);
-
-	if (r <10)
+	if (isItemDropped == false)
 	{
-		instantiate(new BulletItem(px + 80, py + 30));
-	}
-	**/
+		//아이템 생성하기
+		/**확률사용
+		int r = Random::range(0, 100);
 
-	cout << "적기 생성 번호 " << num << endl;
-	instantiate(new BulletItem(px + 80, py + 30));
+		if (r <10)
+		{
+			instantiate(new BulletItem(px + 80, py + 30));
+		}
+		**/
+
+		cout << "적기 생성 번호 " << num << endl;
+
+		if (GameManager::doDropBulletItem(num) == true)
+		{
+			instantiate(new BulletItem(px + 80, py + 30));
+		}
+
+		isItemDropped = true;  //아이템 생성을 했음
+	}
 }
 
 void Enemy::onDestroy()

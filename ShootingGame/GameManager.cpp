@@ -6,10 +6,10 @@ int GameManager::enemyDestroyCount = 0;
 
 int GameManager::playerCount = 3; 
 
-bool GameManager::dropBulletItem[20] = {true, true, true, true, true, 
-										true, true, true, true, true, 
-										true, true, true, true, true, 
-										true, true, true, true, true };
+bool GameManager::dropBulletItem[MAX_ENEMY] = { false, false, false, false, false,
+												false, false, true , false, false,
+												false, false, false, true , false,
+												false, false, true , false, true };
 
 void GameManager::addEnemySpawnCount()
 {
@@ -44,4 +44,9 @@ void GameManager::reSpawnPlayer()
 		//게임오버
 		ObjectManager::instantiate(new GameOver((WIDTH - 420) / 2, 200) , 9); //UI는 가장위의 레이어 할당
 	}
+}
+
+bool GameManager::doDropBulletItem(int num)
+{
+	return dropBulletItem[num];
 }

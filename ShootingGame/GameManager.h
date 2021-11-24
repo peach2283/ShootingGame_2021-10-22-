@@ -1,5 +1,7 @@
 #pragma once
 
+#define MAX_ENEMY 20
+
 class GameManager
 {
 private:
@@ -9,7 +11,7 @@ private:
 	static int playerCount; //게임에서.. 남은 플레이어 카운트
 
 	//적기 총알(레이저)아이템 생성배열
-	static bool dropBulletItem[20];
+	static bool dropBulletItem[MAX_ENEMY];
 
 public:
 
@@ -20,4 +22,5 @@ public:
 	static int getEnemyDestroyCount();
 
 	static void reSpawnPlayer(); 
+	static bool doDropBulletItem(int num);
 };
