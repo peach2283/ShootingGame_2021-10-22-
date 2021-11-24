@@ -6,6 +6,11 @@ int GameManager::enemyDestroyCount = 0;
 
 int GameManager::playerCount = 3; 
 
+bool GameManager::dropBulletItem[20] = {true, true, true, true, true, 
+										true, true, true, true, true, 
+										true, true, true, true, true, 
+										true, true, true, true, true };
+
 void GameManager::addEnemySpawnCount()
 {
 	enemySpawnCount++;  //적기스폰카운트 증가

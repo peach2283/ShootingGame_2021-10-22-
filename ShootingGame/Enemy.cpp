@@ -1,7 +1,7 @@
 #include "framework.h"
 #include "ShootingGame.h"
 
-Enemy::Enemy(float px, float py) : Animation("적기","",true, px, py)
+Enemy::Enemy(float px, float py, int num) : Animation("적기","",true, px, py)
 {
 	this->hp    = 100; //적기체력
 	
@@ -14,6 +14,7 @@ Enemy::Enemy(float px, float py) : Animation("적기","",true, px, py)
 	this->fireDelay = 1;
 
 	this->downStopVar = Random::range(-80, 80);
+	this->num		  = num;
 }
 
 Enemy::~Enemy()
@@ -166,10 +167,23 @@ void Enemy::explode()
 	float py = getPy();
 
 	//적기 폭발
-	instantiate(new EnemyExp(px + 30, py + 30));
+	instantiate(new EnemyExp(px + 30, py + 30), 1);
 
 	//적기 제거
 	destroy(this);
+
+	//아이템 생성하기
+	/**확률사용
+	int r = Random::range(0, 100);
+
+	if (r <10)
+	{
+		instantiate(new BulletItem(px + 80, py + 30));
+	}
+	**/
+
+	cout << "적기 생성 번호 " << num << endl;
+	instantiate(new BulletItem(px + 80, py + 30));
 }
 
 void Enemy::onDestroy()

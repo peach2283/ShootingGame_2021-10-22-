@@ -18,10 +18,11 @@ private:
 	float fireDelay;
 
 	int downStopVar;  //down 상태에서 left상태로..전이되는 높이 변화랜덤값
+	int num;          //적기 생성 번호
 
 public:
 
-	Enemy(float px, float py);
+	Enemy(float px, float py, int num);
 	~Enemy();
 
 	void start();

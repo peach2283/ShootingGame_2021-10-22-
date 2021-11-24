@@ -31,7 +31,7 @@ void EnemySpawner::update()
 			int    spawnIdx		  = Random::range(0, 3); //0,1,2
 			float  spawnPos[3][2] = { {px - 95 - 120, py - 137}, {px - 95      , py - 137}, {px - 95 + 120, py - 137} };
 
-			instantiate(new Enemy(spawnPos[spawnIdx][0], spawnPos[spawnIdx][1]));
+			instantiate(new Enemy(spawnPos[spawnIdx][0],  spawnPos[spawnIdx][1] , spawnCount), 1);
 
 			spawnTimer = 0;
 
