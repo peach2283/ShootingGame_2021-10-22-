@@ -52,11 +52,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     //적기 스포너 추가하기//
     ObjectManager::instantiate(new EnemySpawner(WIDTH/2, 0));
 
-    //총알 아이템 테스트
-    //ObjectManager::instantiate(new BulletItem(100, 300), 2);
-    //ObjectManager::instantiate(new BulletItem(200, 300), 2);
-    //ObjectManager::instantiate(new BulletItem(300, 300), 2);
-    //ObjectManager::instantiate(new BulletItem(400, 300), 2);
+    //폭탄 아이템 테스트
+    //ObjectManager::instantiate(new BombItem(100, 300), 2);
+    //ObjectManager::instantiate(new BombItem(200, 300), 2);
+    //ObjectManager::instantiate(new BombItem(300, 300), 2);
+    //ObjectManager::instantiate(new BombItem(400, 300), 2);
 
     // 기본 메시지 루프입니다:
     while (true)

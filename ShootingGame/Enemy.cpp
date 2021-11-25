@@ -175,22 +175,14 @@ void Enemy::explode()
 
 	if (isItemDropped == false)
 	{
-		//아이템 생성하기
-		/**확률사용
-		int r = Random::range(0, 100);
-
-		if (r <10)
-		{
-			instantiate(new BulletItem(px + 80, py + 30));
-		}
-		**/
-
-		cout << "적기 생성 번호 " << num << endl;
-
+		///총알(레이저) 아이템 생성하기 //		
 		if (GameManager::doDropBulletItem(num) == true)
 		{
 			instantiate(new BulletItem(px + 80, py + 30));
 		}
+
+		///폭탄 아아템 생성하기//
+		instantiate(new BombItem(px + 80, py + 50));
 
 		isItemDropped = true;  //아이템 생성을 했음
 	}

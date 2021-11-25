@@ -14,11 +14,11 @@ private:
 	float fireDelay; //발사간 지연 시간
 	
 	int   fireCount; //레이저 발사갯수
+	int   bombCount; //남은 폭탄 갯수
 
 	float hp;   //이후에..게임매니저로..이동
 
 	State state;
-
 
 public:
 	Player(float px, float py);

@@ -11,6 +11,7 @@ Player::Player(float px, float py) : Animation("ÇÃ·¹ÀÌ¾î","", true, px, py)
 	this->hp		= 100;
 	this->state		= State::up;
 	this->fireCount = 1;
+	this->bombCount = 3;
 }
 
 Player::~Player()
@@ -208,10 +209,18 @@ void Player::fire()  //¹ß»ç ÇÔ¼ö
 	//ÆøÅº ¹ß»çÇÏ±â
 	if (Input::getKeyDown(KeyCode::Z) == true)
 	{
-		float px = getPx();
-		float py = getPy();
+		if (bombCount > 0)
+		{
+			float px = getPx();
+			float py = getPy();
 
-		instantiate(new Bomb(px+15, py-15));
+			instantiate(new Bomb(px + 15, py - 15));
+
+			bombCount--; //ÆøÅº°¹¼ö °¨¼Ò
+		}
+		else {
+			cout << "³²Àº ÆøÅºÀÌ ¾ø½À´Ï´Ù." << endl;
+		}
 	}
 
 }
@@ -234,6 +243,10 @@ void Player::onTrigger(GameObject* other)
 		{
 			fireCount++;
 		}
+	}
+	else if (tag == "ÆøÅº¾ÆÀÌÅÛ") //ÇÃ·¹ÀÌ¾î ÆøÅº°¹¼ö Áõ°¡ ¾ÆÀÌÅÛ
+	{
+		bombCount++;  //ÆøÅº ÃÖ´ë°¹¼ö´Â ³ªÁß¿¡ °í·ÁÇÔ
 	}
 }
 
