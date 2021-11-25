@@ -7,6 +7,11 @@ BombItem::BombItem(float px, float py) : Sprite("∆¯≈∫æ∆¿Ã≈€", "", true, px, py)
 
 	this->moveState  = MoveState::move;
 	this->blinkState = BlinkState::off;
+
+	this->moveTimer = 2;
+
+	this->blinkTimer = 0;
+	this->blinkDelay = 0.2;
 }
 
 BombItem::~BombItem()
@@ -16,6 +21,8 @@ void BombItem::start()
 {
 	setImage("Asset/∆¯≈∫æ∆¿Ã≈€.bmp");
 	addBoxCollider2D(new BoxCollider2D(0, 0, 22, 40));
+
+	destroy(this, 5);
 }
 
 void BombItem::update()
@@ -25,10 +32,17 @@ void BombItem::update()
 	{
 		case MoveState::move :
 		{
-		
+			translate(0, speed * Time::deltaTime);
+
+			moveTimer = moveTimer - Time::deltaTime;
+
+			if (moveTimer <= 0)
+			{
+				moveState = MoveState::stop;
+			}
+
 		}
 		break;
-
 		
 		case MoveState::stop:
 		{
@@ -37,18 +51,35 @@ void BombItem::update()
 			 {
 				case BlinkState::on:
 				{
-				
+					setActive(true);
+
+					blinkTimer = blinkTimer + Time::deltaTime;
+
+					if (blinkTimer >= blinkDelay)
+					{
+						blinkState = BlinkState::off;
+						blinkTimer = 0;
+					}
+
 				}
 				break;
 			
 				case BlinkState::off:
 				{
-				
+					setActive(false);
+
+					blinkTimer = blinkTimer + Time::deltaTime;
+
+					if (blinkTimer >= blinkDelay)
+					{
+						blinkState = BlinkState::on;
+						blinkTimer = 0;
+					}
 				
 				}
 				break;
 			
-			}
+			 }
 		
 		}
 		break;

@@ -11,6 +11,11 @@ bool GameManager::dropBulletItem[MAX_ENEMY] = { false, false, false, false, fals
 												false, false, false, true , false,
 												false, false, true , false, true };
 
+bool GameManager::dropBombItem[MAX_ENEMY]   = { false, false, false, false, false,
+												false, false, false, false, true,
+												false, false, false, false, true,
+												false, true , false, true , false };
+
 void GameManager::addEnemySpawnCount()
 {
 	enemySpawnCount++;  //적기스폰카운트 증가
@@ -49,4 +54,9 @@ void GameManager::reSpawnPlayer()
 bool GameManager::doDropBulletItem(int num)
 {
 	return dropBulletItem[num];
+}
+
+bool GameManager::doDropBombItem(int num)
+{
+	return dropBombItem[num];
 }

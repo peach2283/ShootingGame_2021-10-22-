@@ -13,6 +13,9 @@ private:
 	//적기 총알(레이저)아이템 생성배열
 	static bool dropBulletItem[MAX_ENEMY];
 
+	//폭탄 아이템 생성 배열
+	static bool dropBombItem[MAX_ENEMY];
+
 public:
 
 	static void addEnemySpawnCount();
@@ -22,5 +25,7 @@ public:
 	static int getEnemyDestroyCount();
 
 	static void reSpawnPlayer(); 
+
 	static bool doDropBulletItem(int num);
+	static bool doDropBombItem(int num);
 };

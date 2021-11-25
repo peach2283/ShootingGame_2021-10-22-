@@ -182,7 +182,10 @@ void Enemy::explode()
 		}
 
 		///폭탄 아아템 생성하기//
-		instantiate(new BombItem(px + 80, py + 50));
+		if (GameManager::doDropBombItem(num) == true)
+		{
+			instantiate(new BombItem(px + 80, py + 50));
+		}
 
 		isItemDropped = true;  //아이템 생성을 했음
 	}
