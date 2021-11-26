@@ -42,8 +42,9 @@ void EnemySpawner::update()
 			if (GameManager::getEnemySpawnCount() >= MAX_ENEMY)
 			{
 				cout << "=====보스 스폰하기====" << endl;
-
-				destroy(this);  //스포너 제거하기
+				
+				instantiate(new Boss(-6.5, 70), 0); //보스 스폰하기
+				destroy(this);						//스포너 제거하기
 			}
 
 		}

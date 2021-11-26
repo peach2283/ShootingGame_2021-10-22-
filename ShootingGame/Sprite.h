@@ -13,5 +13,7 @@ public:
 	~Sprite();
 
 	void setImage(const char* fileName);
+	void setImage(const char* fileName, int x, int y, int width, int height);
+
 	void draw();
 };

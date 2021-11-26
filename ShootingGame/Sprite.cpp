@@ -22,6 +22,11 @@ void Sprite::setImage(const char* fileName)
 	BMP::readBMP(fileName, &image);
 }
 
+void Sprite::setImage(const char* fileName, int x, int y, int width, int height)
+{
+	BMP::readBMP(fileName, x, y, width, height, &image);
+}
+
 void Sprite::draw()
 {
 	//이미지(스플라이트)그리기
