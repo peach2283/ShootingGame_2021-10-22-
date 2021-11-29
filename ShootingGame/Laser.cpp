@@ -30,7 +30,7 @@ void Laser::onTrigger(GameObject* other)
 {
 	string tag = other->getTag();
 
-	if (tag == "적기")
+	if (tag == "적기" || tag == "보스캐논")
 	{
 		//현재 레이저 위치
 		float px = getPx();

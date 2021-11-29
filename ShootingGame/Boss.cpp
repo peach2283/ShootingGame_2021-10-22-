@@ -2,7 +2,10 @@
 #include "ShootingGame.h"
 
 Boss::Boss(float px, float py) : Sprite("","",true, px, py)
-{}
+{
+	this->speed = 50;
+	this->state = State::down;
+}
 
 Boss::~Boss()
 {}
@@ -53,4 +56,30 @@ void Boss::start()
 	//보스 레이더 자식객체 추가하기
 	addChildObject(new Radar(241, 105));
 	addChildObject(new Radar(241, 117));
+}
+
+void Boss::update()
+{
+	switch (state)
+	{
+		case State::down:
+		{
+			translate(0, speed * Time::deltaTime);
+
+			if (getPy() > 70)
+			{
+				state = State::attack;
+			}
+		}
+		break;
+
+		case State::attack:
+		{
+	
+		}
+		break;
+
+	}
+
+	
 }

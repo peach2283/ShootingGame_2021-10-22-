@@ -43,8 +43,8 @@ void EnemySpawner::update()
 			{
 				cout << "=====보스 스폰하기====" << endl;
 				
-				instantiate(new Boss(-6.5, 70), 0); //보스 스폰하기
-				destroy(this);						//스포너 제거하기
+				instantiate(new Boss(-6.5, -200), 0); //보스 스폰하기
+				destroy(this);					      //스포너 제거하기
 			}
 
 		}
