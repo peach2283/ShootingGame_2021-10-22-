@@ -11,20 +11,5 @@ Wing::~Wing()
 
 void Wing::start()
 {
-	if (num == 0)
-	{
-		setImage("Asset/보스.bmp", 298, 425, 30, 18);
-	}
-	else if (num == 1)
-	{
-		setImage("Asset/보스.bmp", 329, 426, 32, 16);
-	}
-	else if (num == 2)
-	{
-		setImage("Asset/보스.bmp", 364, 426, 32, 16);
-	}
-	else if (num == 3)
-	{
-		setImage("Asset/보스.bmp", 399, 426, 32, 16);
-	}
+	setImage("Asset/보스.bmp", imgRect[num][0], imgRect[num][1], imgRect[num][2], imgRect[num][3]);
 }

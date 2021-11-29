@@ -197,7 +197,7 @@ vector<BoxCollider2D*> GameObject::getCollider()
 	return collider; 
 }
 
-void GameObject::addChidObject(GameObject* obj, int layer)
+void GameObject::addChildObject(GameObject* obj, int layer)
 {
 	//this, childObject목록체..obj가 자식으로..추가됨...
 	obj->parent = this;

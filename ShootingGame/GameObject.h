@@ -79,7 +79,7 @@ public:
 	vector<BoxCollider2D *> getCollider();
 
 	//자식오브젝트 추가함수//
-	void addChidObject(GameObject* obj, int layer=0);
+	void addChildObject(GameObject* obj, int layer=0);
 
 	//충돌(Trigger) 이벤트 가상 함수
 	virtual void onTrigger(GameObject * other);
