@@ -159,6 +159,9 @@
     <ClInclude Include="Radar.h">
       <Filter>헤더 파일\게임객체</Filter>
     </ClInclude>
+    <ClInclude Include="BossSpriteChild.h">
+      <Filter>헤더 파일\게임객체</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp">
@@ -264,6 +267,9 @@
       <Filter>소스 파일\게임객체</Filter>
     </ClCompile>
     <ClCompile Include="Radar.cpp">
+      <Filter>소스 파일\게임객체</Filter>
+    </ClCompile>
+    <ClCompile Include="BossSpriteChild.cpp">
       <Filter>소스 파일\게임객체</Filter>
     </ClCompile>
   </ItemGroup>

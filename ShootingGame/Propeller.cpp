@@ -1,7 +1,7 @@
 #include "framework.h"
 #include "ShootingGame.h"
 
-Propeller::Propeller(float px, float py) : Animation("","",true,px , py)
+Propeller::Propeller(float px, float py) : Animation("보스자식","",true,px , py)
 {}
 
 Propeller::~Propeller()

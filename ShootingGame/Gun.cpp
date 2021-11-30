@@ -1,7 +1,7 @@
 #include "framework.h"
 #include "ShootingGame.h"
 
-Gun::Gun(float px, float py) : Sprite("","",true, px, py)
+Gun::Gun(float px, float py) : Sprite("보스자식","",true, px, py)
 {}
 
 Gun::~Gun()

@@ -1,13 +1,14 @@
 #pragma once
 
-#include "Sprite.h"
+#include "BossSpriteChild.h"
 
-class Radar : public Sprite
+class Radar : public BossSpriteChild
 {
 private:
+	
 public:
 	Radar(float px, float py);
 	~Radar();
 
-	void start();
+	void start();	
 };

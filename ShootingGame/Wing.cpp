@@ -1,7 +1,7 @@
 #include "framework.h"
 #include "ShootingGame.h"
 
-Wing::Wing(float px, float py, int num) : Sprite("","", true, px, py)
+Wing::Wing(float px, float py, int num) : Sprite("보스자식","", true, px, py)
 {
 	this->num = num;
 }
