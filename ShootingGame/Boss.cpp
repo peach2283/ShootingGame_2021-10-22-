@@ -56,6 +56,10 @@ void Boss::start()
 	//보스 레이더 자식객체 추가하기
 	addChildObject(new Radar(241, 105));
 	addChildObject(new Radar(241, 117));
+
+	//보스 전체 충돌체 추가하기
+	addBoxCollider2D(new BoxCollider2D(230, 5, 33, 170)); //가운데 몸통
+
 }
 
 void Boss::update()

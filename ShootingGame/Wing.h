@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Sprite.h"
+#include "BossSpriteChild.h"
 
-class Wing : public Sprite
+class Wing : public BossSpriteChild
 {
 private:
 	
