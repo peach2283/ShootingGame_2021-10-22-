@@ -11,5 +11,8 @@ public:
 	~DeadBoss();
 
 	void start();
-	
+	void update();
+
+	//Destroy 이벤트 오버라이딩//
+	void onDestroy();
 };

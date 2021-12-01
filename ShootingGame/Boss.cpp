@@ -87,12 +87,24 @@ void Boss::update()
 	//남은 자식갯수 알아와서..보스 폭발 시키기//
 	int count = childCount();
 
-	if (count == 24)
+	if (count == 0)
 	{
 		float px = getPx();
 		float py = getPy();
 
 		//보스 폭발 효과
+		instantiate(new EnemyExp(px + 180, py + 40), 1);
+
+		instantiate(new EnemyExp(px + 180 + 70,  py + 40), 1);
+		instantiate(new EnemyExp(px + 180 + 140, py + 40), 1);
+		instantiate(new EnemyExp(px + 180 + 210, py + 40), 1);
+
+		instantiate(new EnemyExp(px + 180 - 70,  py + 40), 1);
+		instantiate(new EnemyExp(px + 180 - 140, py + 40), 1);
+		instantiate(new EnemyExp(px + 180 - 210, py + 40), 1);
+
+		instantiate(new EnemyExp(px + 180, py + 40 - 70), 1);
+		instantiate(new EnemyExp(px + 180, py + 40 + 70), 1);
 
 		//보스 객체를 제거
 		destroy(this);
