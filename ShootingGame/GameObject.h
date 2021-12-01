@@ -97,4 +97,7 @@ public:
 
 	//이름으로 자식객체 찾기
 	GameObject* find(string name);
+
+	//자식객체 갯수 알아오기
+	int childCount();
 };

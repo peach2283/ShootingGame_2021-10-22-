@@ -37,6 +37,7 @@
 #include "Cannon.h"
 #include "Radar.h"
 #include "BossSpriteChild.h"
+#include "DeadBoss.h"
 
 #define WIDTH  480  //게임장면..가로크기
 #define HEIGHT 800  //게임장면..세로크기

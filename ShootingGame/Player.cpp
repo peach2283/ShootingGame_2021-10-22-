@@ -237,6 +237,10 @@ void Player::onTrigger(GameObject* other)
 	{
 		damage(50);
 	}
+	else if (tag == "보스")
+	{
+		damage(100);
+	}
 	else if (tag == "총알아이템")  //플레이어 레이저발사 갯수 증가 아이템
 	{
 		if (fireCount < 3)
@@ -252,7 +256,7 @@ void Player::onTrigger(GameObject* other)
 
 void Player::damage(float amount)
 {
-	//hp = hp - amount;
+	hp = hp - amount;
 
 	if (hp <= 0)
 	{

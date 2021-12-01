@@ -1,7 +1,7 @@
 #include "framework.h"
 #include "ShootingGame.h"
 
-Boss::Boss(float px, float py) : Sprite("","",true, px, py)
+Boss::Boss(float px, float py) : Sprite("보스","",true, px, py)
 {
 	this->speed = 50;
 	this->state = State::down;
@@ -14,9 +14,6 @@ void Boss::start()
 {
 	//보스 기본이미지 로드 하기//
 	setImage("Asset/보스.bmp", 0, 0, 493, 206);
-
-	//보스 폭발후 이미지 로드하기//
-	//setImage("Asset/보스.bmp", 0, 613, 385, 182);
 
 	//프로펠러..자식객체 추가하기//
 	addChildObject(new Propeller( 63, 41));
@@ -58,12 +55,14 @@ void Boss::start()
 	addChildObject(new Radar(241, 117));
 
 	//보스 전체 충돌체 추가하기
-	addBoxCollider2D(new BoxCollider2D(230, 5, 33, 170)); //가운데 몸통
-
+	addBoxCollider2D(new BoxCollider2D(230,    5,   33,     170)); //가운데 몸통
+	addBoxCollider2D(new BoxCollider2D(0,     60,   493,    45));  //가운데 날개
+	addBoxCollider2D(new BoxCollider2D(185,   175,  123,    25));  //꼬리  날개
 }
 
 void Boss::update()
 {
+	//보스 스테이트 머신//
 	switch (state)
 	{
 		case State::down:
@@ -85,5 +84,20 @@ void Boss::update()
 
 	}
 
-	
+	//남은 자식갯수 알아와서..보스 폭발 시키기//
+	int count = childCount();
+
+	if (count == 24)
+	{
+		float px = getPx();
+		float py = getPy();
+
+		//보스 폭발 효과
+
+		//보스 객체를 제거
+		destroy(this);
+
+		//파괴된 보스 객체를...제거된 보스 위치에 생성함
+		instantiate(new DeadBoss(px + 45, py+10));
+	}	
 }
