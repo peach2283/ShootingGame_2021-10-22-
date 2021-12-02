@@ -7,7 +7,7 @@ Boss::Boss(float px, float py) : Sprite("º¸½º","",true, px, py)
 	this->state = State::down;
 
 	this->fireTimer = 0;
-	this->fireDelay = 1;
+	this->fireDelay = 0.7;
 
 	this->fireIndex = 0;
 }
@@ -105,6 +105,10 @@ void Boss::update()
 
 				fireIndex++;
 
+				if (fireIndex >= MAX_FIRE_LINE)
+				{
+					fireIndex = 0;
+				}
 				/************************************************/
 
 				fireTimer = 0;

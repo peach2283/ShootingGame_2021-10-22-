@@ -2,6 +2,8 @@
 
 #include "Sprite.h"
 
+#define MAX_FIRE_LINE 15
+
 class Boss : public Sprite
 {
 	enum class State{down=0 , attack=1};
@@ -13,7 +15,7 @@ private:
 	float fireTimer;
 	float fireDelay;
 
-	bool  fireArray[10][7] = { 
+	bool  fireArray[MAX_FIRE_LINE][7] = {
 								{true, true, true,       false,     false, false, false},
 								{true, true, true,       false,     false, false, false},
 								{true, true, true,       false,     false, false, false},
@@ -24,7 +26,13 @@ private:
 								{false, false, false,    false,     true, true, true},
 								{false, false, false,    false,     true, true, true},
 								{false, false, false,    false,     true, true, true},
-								{false, false, false,    false,     true, true, true}
+								{false, false, false,    false,     true, true, true},
+
+								{false, false, false,    true,     false, false, false,},
+								{false, false, false,    true,     false, false, false,},
+								{false, false, false,    true,     false, false, false,},
+								{false, false, false,    true,     false, false, false,},
+								{false, false, false,    true,     false, false, false,}
 							};
 	int fireIndex;
 
