@@ -5,6 +5,11 @@ Boss::Boss(float px, float py) : Sprite("보스","",true, px, py)
 {
 	this->speed = 50;
 	this->state = State::down;
+
+	this->fireTimer = 0;
+	this->fireDelay = 1;
+
+	this->fireIndex = 0;
 }
 
 Boss::~Boss()
@@ -36,15 +41,15 @@ void Boss::start()
 	addChildObject(new Wing(62 , 84,  7 )); //왼쪽 네번째
 
 	//보스 건 자식객체 추가하기//
-	addChildObject(new Gun(94 , 71));
-	addChildObject(new Gun(142, 71));
-	addChildObject(new Gun(190, 71));
+	addChildObject(new Gun(94 , 71, "건0"));
+	addChildObject(new Gun(142, 71, "건1"));
+	addChildObject(new Gun(190, 71, "건2"));
 
-	addChildObject(new Gun(238, 63));
+	addChildObject(new Gun(238, 63 , "건3"));
 
-	addChildObject(new Gun(286, 71));
-	addChildObject(new Gun(334, 71));
-	addChildObject(new Gun(382, 71));
+	addChildObject(new Gun(286, 71, "건4"));
+	addChildObject(new Gun(334, 71, "건5"));
+	addChildObject(new Gun(382, 71, "건6"));
 
 	//보스 대포 자식객체 추가하기
 	addChildObject(new Cannon(265 + 5, 97 + 10));
@@ -78,10 +83,35 @@ void Boss::update()
 
 		case State::attack:
 		{
-	
-		}
-		break;
+			fireTimer = fireTimer + Time::deltaTime;
 
+			if (fireTimer >= fireDelay)
+			{
+				/**************보스건 발사하기*********************/
+				string gunName[7] = { "건0", "건1","건2", "건3", "건4", "건5", "건6" };
+
+				for (int i = 0; i < 7; i++)
+				{
+					if (fireArray[fireIndex][i] == true)
+					{
+						Gun* gun = (Gun*)find(gunName[i]);
+
+						if (gun != nullptr)
+						{
+							gun->fire();
+						}
+					}
+				}
+
+				fireIndex++;
+
+				/************************************************/
+
+				fireTimer = 0;
+			}
+		}
+
+		break;
 	}
 
 	//남은 자식갯수 알아와서..보스 폭발 시키기//
