@@ -53,10 +53,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     //ObjectManager::instantiate(new EnemySpawner(WIDTH/2, 0));
 
     //보스 테스트
-    ObjectManager::instantiate(new Boss(-6.5, 70), 0);
+    //ObjectManager::instantiate(new Boss(-6.5, 70), 0);
 
     //캐논볼 테스트
-    ObjectManager::instantiate(new CannonBall(200, 400));
+    ObjectManager::instantiate(new CannonBall(200, 400 ,   0));
+    ObjectManager::instantiate(new CannonBall(200, 400 ,  90));
+    ObjectManager::instantiate(new CannonBall(200, 400 , 180));
+    ObjectManager::instantiate(new CannonBall(200, 400 , 270));
 
     // 기본 메시지 루프입니다:
     while (true)
