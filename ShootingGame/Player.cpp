@@ -45,6 +45,8 @@ void Player::start()
 	addBoxCollider2D(new BoxCollider2D(24, 5,  14, 65));
 	addBoxCollider2D(new BoxCollider2D(5 , 42, 52, 15));
 
+	//addBoxCollider2D(new BoxCollider2D(24, 40, 14, 15));
+
 	//방패 자식객체 추가하기
 	addChildObject(new Shield(-12, -10), 2);
 }
@@ -232,6 +234,10 @@ void Player::onTrigger(GameObject* other)
 	if (tag == "적기총알") 
 	{
 		damage(10);
+	}
+	else if (tag == "보스포탄")
+	{
+		damage(20);
 	}
 	else if (tag == "적기")
 	{

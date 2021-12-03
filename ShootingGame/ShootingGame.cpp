@@ -50,17 +50,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ObjectManager::instantiate(new Player(WIDTH / 2 - 34, HEIGHT + 50), 1); //플레이어 추가 - 1번 레이어
 
     //적기 스포너 추가하기//
-    //ObjectManager::instantiate(new EnemySpawner(WIDTH/2, 0));
+    ObjectManager::instantiate(new EnemySpawner(WIDTH/2, 0));
 
     //보스 테스트
     //ObjectManager::instantiate(new Boss(-6.5, 70), 0);
-
-    //캐논볼 테스트
-    ObjectManager::instantiate(new CannonBall(200, 400 ,   0));
-    ObjectManager::instantiate(new CannonBall(200, 400 ,  90));
-    ObjectManager::instantiate(new CannonBall(200, 400 , 180));
-    ObjectManager::instantiate(new CannonBall(200, 400 , 270));
-
+ 
     // 기본 메시지 루프입니다:
     while (true)
     {

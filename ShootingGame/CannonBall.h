@@ -14,4 +14,6 @@ public:
 
 	void start();
 	void update();
+
+	void onTrigger(GameObject* other);
 };
