@@ -35,3 +35,13 @@ void Sprite::draw()
 
 	BMP::drawBMP(px, py, &image);
 }
+
+int Sprite::getWidth()
+{
+	return image.width;
+}
+
+int Sprite::getHeight()
+{
+	return image.height;
+}

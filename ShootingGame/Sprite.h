@@ -16,4 +16,7 @@ public:
 	void setImage(const char* fileName, int x, int y, int width, int height);
 
 	void draw();
+
+	int getWidth();
+	int getHeight();
 };
