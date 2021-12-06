@@ -50,10 +50,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ObjectManager::instantiate(new Player(WIDTH / 2 - 34, HEIGHT + 50), 1); //플레이어 추가 - 1번 레이어
 
     //적기 스포너 추가하기//
-    ObjectManager::instantiate(new EnemySpawner(WIDTH/2, 0));
+    //ObjectManager::instantiate(new EnemySpawner(WIDTH/2, 0));
 
-    //보스 테스트
-    //ObjectManager::instantiate(new Boss(-6.5, 70), 0);
+    //버튼 테스트하기
+    ObjectManager::instantiate(new Button(150, 200), 9);
  
     // 기본 메시지 루프입니다:
     while (true)
@@ -167,6 +167,26 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             render();  //윈도우...출력하기
             
             EndPaint(hWnd, &ps);
+        }
+        break;
+
+    case WM_MOUSEMOVE:
+
+    case WM_MBUTTONUP:
+    case WM_MBUTTONDOWN:
+
+    case WM_RBUTTONUP:
+    case WM_RBUTTONDOWN:
+
+    case WM_LBUTTONUP:
+    case WM_LBUTTONDOWN:
+        {
+            //마우스좌표
+            short mx = LOWORD(lParam);
+            short my = HIWORD(lParam);
+
+            Input::mousePosition.x = mx;
+            Input::mousePosition.y = my;
         }
         break;
     case WM_DESTROY:

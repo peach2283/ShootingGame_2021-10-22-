@@ -5,6 +5,12 @@
 //키코드 열거형
 enum class KeyCode { upArrow = 0, downArrow = 1, leftArrow = 2, rightArrow = 3, space = 4, Z = 5 };
 
+struct MousePosition
+{
+	int x;
+	int y;
+};
+
 class Input
 {
 	//키보드 상태 열거형
@@ -16,6 +22,9 @@ private:
 
 public:
 	static void update();
+
+	//마우스좌표 저장변수
+	static MousePosition mousePosition;
 
 	//키입력 상태..체크 함수//
 	static bool getKey    (KeyCode keycode);
