@@ -5,6 +5,8 @@
 class BTNPause : public Button
 {
 private:
+	bool isPause;  //true(정지), false(진행)
+
 public:
 	BTNPause(float px, float py);
 	~BTNPause();

@@ -16,6 +16,9 @@ private:
 	//폭탄 아이템 생성 배열
 	static bool dropBombItem[MAX_ENEMY];
 
+	//게임일시정지 상태 변수
+	static bool isPause;
+
 public:
 
 	static void addEnemySpawnCount();

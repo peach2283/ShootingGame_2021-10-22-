@@ -16,6 +16,8 @@ bool GameManager::dropBombItem[MAX_ENEMY]   = { false, false, false, false, fals
 												false, false, false, false, true,
 												false, true , false, true , false };
 
+bool GameManager::isPause = false;
+
 void GameManager::addEnemySpawnCount()
 {
 	enemySpawnCount++;  //적기스폰카운트 증가

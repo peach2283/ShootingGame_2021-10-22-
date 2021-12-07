@@ -4,6 +4,7 @@
 float Time::startTime = 0;
 float Time::endTime   = 0;
 float Time::deltaTime = 0;
+float Time::timeScale = 1.0f;
 
 //타임(델타타임) 초기화
 void Time::init()
@@ -20,7 +21,7 @@ void Time::update()
 	endTime = (float)GetTickCount64() / (float)1000;
 
 	//델타타임
-	deltaTime = endTime - startTime;
+	deltaTime = (endTime - startTime) * timeScale;
 
 	//printf("델타 타임 %f\n", deltaTime);
 

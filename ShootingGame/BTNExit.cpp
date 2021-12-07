@@ -13,6 +13,6 @@ void BTNExit::start()
 }
 
 void BTNExit::onClick()
-{
-	cout << "Exit버튼이 클리됨" << endl;
+{	
+	Application::quit();  //게임종료하기
 }
