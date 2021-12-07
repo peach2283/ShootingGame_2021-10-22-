@@ -155,6 +155,8 @@
     <ClInclude Include="Boss.h" />
     <ClInclude Include="BossSpriteChild.h" />
     <ClInclude Include="BoxCollider2D.h" />
+    <ClInclude Include="BTNExit.h" />
+    <ClInclude Include="BTNPause.h" />
     <ClInclude Include="BulletExp.h" />
     <ClInclude Include="BulletItem.h" />
     <ClInclude Include="Button.h" />
@@ -199,6 +201,8 @@
     <ClCompile Include="Boss.cpp" />
     <ClCompile Include="BossSpriteChild.cpp" />
     <ClCompile Include="BoxCollider2D.cpp" />
+    <ClCompile Include="BTNExit.cpp" />
+    <ClCompile Include="BTNPause.cpp" />
     <ClCompile Include="BulletExp.cpp" />
     <ClCompile Include="BulletItem.cpp" />
     <ClCompile Include="Button.cpp" />

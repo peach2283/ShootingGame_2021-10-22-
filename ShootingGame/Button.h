@@ -14,9 +14,8 @@ public:
 	Button(float px, float py);
 	~Button();
 
-	void start();
 	void update();
-
 	bool isInImageRect();
 
+	virtual void onClick();
 };

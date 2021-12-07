@@ -9,11 +9,6 @@ Button::Button(float px, float py) : Sprite("","", true, px, py)
 Button::~Button()
 {}
 
-void Button::start()
-{
-	setImage("Asset/UI/item.bmp");
-}
-
 void Button::update()
 {
 	switch (state)
@@ -57,8 +52,8 @@ void Button::update()
 		   //버튼 동작실행//
 			state = State::normal;
 
-			cout << "UI 버튼이 클릭됨 - 버튼 동작실행" << endl;
-
+			//부모의 가상함수 실행
+			onClick();
 		}
 		break;
 
@@ -88,4 +83,9 @@ bool Button::isInImageRect()
 	else {
 		return false;
 	}
+}
+
+void Button::onClick()
+{
+	cout << "UI 버튼이 클릭됨 - 버튼 동작실행" << endl;
 }
