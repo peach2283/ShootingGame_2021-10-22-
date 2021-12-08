@@ -56,6 +56,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     ObjectManager::instantiate(new BTNExit  (420, 5), 9);
     ObjectManager::instantiate(new BTNPause (370, 5), 9);
 
+    ObjectManager::instantiate(new PopupMenu((WIDTH - 245)/2, 200), 9);
+
     // 기본 메시지 루프입니다:
     while ( Application::getIsPlaying() == true )
     {

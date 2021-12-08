@@ -62,3 +62,13 @@ bool GameManager::doDropBombItem(int num)
 {
 	return dropBombItem[num];
 }
+
+bool GameManager::getIsPause()
+{
+	return isPause;
+}
+
+void GameManager::setIsPause(bool pause)
+{
+	isPause = pause;
+}

@@ -31,4 +31,8 @@ public:
 
 	static bool doDropBulletItem(int num);
 	static bool doDropBombItem(int num);
+
+	static bool getIsPause();
+	static void setIsPause(bool pause);
+
 };
