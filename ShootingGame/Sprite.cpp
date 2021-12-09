@@ -45,3 +45,8 @@ int Sprite::getHeight()
 {
 	return image.height;
 }
+
+Image Sprite::getImage()
+{
+	return image;
+}

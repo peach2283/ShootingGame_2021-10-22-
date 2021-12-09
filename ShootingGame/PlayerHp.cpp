@@ -16,7 +16,9 @@ void PlayerHp::start()
 
 ////////////체력바 ///////////////////
 HPBar::HPBar(float px, float py) : Sprite("", "", true, px, py)
-{}
+{
+	this->fillAmount = 1.0;
+}
 
 HPBar::~HPBar()
 {}
@@ -24,6 +26,17 @@ HPBar::~HPBar()
 void HPBar::start()
 {
 	setImage("Asset/UI/HPBar.bmp");
+}
+
+void HPBar::draw()
+{
+	Image image = getImage();
+
+	//이미지(스플라이트)그리기
+	float px = getPx();
+	float py = getPy();
+
+	BMP::drawBMP(px, py, &image, fillAmount);
 }
 
 /////////체력(바) 배경//////////////////

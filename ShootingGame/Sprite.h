@@ -19,4 +19,6 @@ public:
 
 	int getWidth();
 	int getHeight();
+
+	Image getImage();
 };

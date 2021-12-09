@@ -19,6 +19,9 @@ private:
 	//게임일시정지 상태 변수
 	static bool isPause;
 
+	//플레이어 체력
+	static float hp;   
+
 public:
 
 	static void addEnemySpawnCount();
@@ -35,4 +38,6 @@ public:
 	static bool getIsPause();
 	static void setIsPause(bool pause);
 
+	static void  damage(float amount);
+	static float getHP();
 };

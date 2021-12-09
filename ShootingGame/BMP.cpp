@@ -109,12 +109,12 @@ void BMP::readBMP(const char* fileName, int x, int y, int width, int height, Ima
 
 }
 
-void BMP::drawBMP(float px, float py, Image* image)
+void BMP::drawBMP(float px, float py, Image* image, float fillAmount)
 {
 	//로드한 이미지 출력하기//
 	for (int y = 0; y < image->height; y++)
 	{
-		for (int x = 0; x < image->width; x++)
+		for (int x = 0; x < image->width * fillAmount ; x++)
 		{
 			unsigned int pixel = image->argb[y * image->width + x];
 			setPixel(px + x, py + y, pixel);

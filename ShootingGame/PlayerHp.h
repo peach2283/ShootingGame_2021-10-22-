@@ -18,11 +18,13 @@ public:
 class HPBar : public Sprite
 {
 private:
+	float fillAmount;
 public:
 	HPBar(float px, float py);
 	~HPBar();
 
 	void start();
+	void draw();
 };
 
 //체력바 배경 클랙스//

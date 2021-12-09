@@ -15,5 +15,5 @@ public:
 	static void readBMP(const char* fileName, int x, int y, int width, int height,  Image* image);
 
 
-	static void drawBMP(float  px, float py , Image* image);
+	static void drawBMP(float  px, float py , Image* image, float fillAmount=1.0);
 };

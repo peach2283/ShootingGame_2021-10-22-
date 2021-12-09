@@ -8,7 +8,6 @@ Player::Player(float px, float py) : Animation("플레이어","", true, px, py)
 	this->fireTimer = 0;
 	this->fireDelay = 0.2;
 
-	this->hp		= 100;
 	this->state		= State::up;
 	this->fireCount = 1;
 	this->bombCount = 3;
@@ -264,9 +263,9 @@ void Player::onTrigger(GameObject* other)
 
 void Player::damage(float amount)
 {
-	//hp = hp - amount;
+	GameManager::damage(amount);
 
-	if (hp <= 0)
+	if (GameManager::getHP() <= 0)
 	{
 		//플레이어 폭발//
 		float px = getPx();

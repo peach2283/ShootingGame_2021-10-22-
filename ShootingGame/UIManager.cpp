@@ -20,6 +20,7 @@ void UIManager::start()
 
 void UIManager::update()
 {
+    ///게임매니저의 일저정지를 UI에 적용하기//////
     if (GameManager::getIsPause() == true)
     {       
         popupMenu->setActive(true);
@@ -27,4 +28,7 @@ void UIManager::update()
     else {        
         popupMenu->setActive(false);
     }
+
+    //게임매니저의 플레이어 체력을 UI에적용하기///
+    cout << "플레이어 체력 " << GameManager::getHP() << endl;
 }

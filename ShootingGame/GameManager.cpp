@@ -18,6 +18,8 @@ bool GameManager::dropBombItem[MAX_ENEMY]   = { false, false, false, false, fals
 
 bool GameManager::isPause = false;
 
+float GameManager::hp     = 100;
+
 void GameManager::addEnemySpawnCount()
 {
 	enemySpawnCount++;  //적기스폰카운트 증가
@@ -71,4 +73,14 @@ bool GameManager::getIsPause()
 void GameManager::setIsPause(bool pause)
 {
 	isPause = pause;
+}
+
+void GameManager::damage(float amount)
+{
+	hp = hp - amount;
+}
+
+float GameManager::getHP()
+{
+	return hp;
 }
