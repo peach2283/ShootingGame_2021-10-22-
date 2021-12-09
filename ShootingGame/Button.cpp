@@ -11,8 +11,10 @@ Button::~Button()
 
 void Button::update()
 {
-	switch (state)
+	if (getActive() == true)
 	{
+		switch (state)
+		{
 		case State::normal:
 		{
 			if (Input::getMoustButtonDown(0) == true && isInImageRect() == true)  //눌림
@@ -38,10 +40,10 @@ void Button::update()
 			}
 		}
 		break;
-		
+
 
 		case State::released:
-		{		
+		{
 			state = State::click;
 		}
 		break;
@@ -49,7 +51,7 @@ void Button::update()
 
 		case State::click:
 		{
-		   //버튼 동작실행//
+			//버튼 동작실행//
 			state = State::normal;
 
 			//부모의 가상함수 실행
@@ -57,7 +59,8 @@ void Button::update()
 		}
 		break;
 
-	}	
+		}
+	}
 }
 
 bool Button::isInImageRect()

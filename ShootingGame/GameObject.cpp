@@ -80,6 +80,12 @@ void GameObject::setName(string name)
 void GameObject::setActive(bool active)
 {
 	this->active = active;
+
+	//자식객체들로..active 상태 적용하기//
+	for (int i = 0; i < childObject.size(); i++)
+	{
+		childObject[i]->setActive(active);
+	}
 }
 
 void GameObject::setPx(float px)
@@ -214,9 +220,10 @@ void GameObject::onTrigger(GameObject * other)
 void GameObject::onDestroy()
 {}
 
-void GameObject::instantiate(GameObject* o, int layer)
+GameObject * GameObject::instantiate(GameObject* o, int layer)
 {
 	ObjectManager::instantiate(o, layer);
+	return o;
 }
 
 void GameObject::destroy(GameObject* o)

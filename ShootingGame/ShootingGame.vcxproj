@@ -176,6 +176,7 @@
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="graphic.h" />
     <ClInclude Include="Gun.h" />
+    <ClInclude Include="PlayerHp.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Laser.h" />
     <ClInclude Include="LaserExp.h" />
@@ -192,6 +193,7 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Time.h" />
+    <ClInclude Include="UIManager.h" />
     <ClInclude Include="Wing.h" />
   </ItemGroup>
   <ItemGroup>
@@ -223,6 +225,7 @@
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="graphic.cpp" />
     <ClCompile Include="Gun.cpp" />
+    <ClCompile Include="PlayerHp.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Laser.cpp" />
     <ClCompile Include="LaserExp.cpp" />
@@ -237,6 +240,7 @@
     <ClCompile Include="ShootingGame.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Time.cpp" />
+    <ClCompile Include="UIManager.cpp" />
     <ClCompile Include="Wing.cpp" />
   </ItemGroup>
   <ItemGroup>

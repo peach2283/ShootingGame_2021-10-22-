@@ -2,7 +2,7 @@
 #include "ShootingGame.h"
 
 //////////////////메뉴 바탕이미지////////////////////
-PopupMenu::PopupMenu(float px, float py) : Sprite("","",true, px, py)
+PopupMenu::PopupMenu(float px, float py) : Sprite("","",false, px, py)
 {}
 
 PopupMenu::~PopupMenu()
@@ -21,7 +21,9 @@ void PopupMenu::start()
 
 ////////////////Exit 메뉴 아이템////////////////////
 ItemExit::ItemExit(float px, float py) : Button(px, py)
-{}
+{
+	setActive(false);
+}
 
 ItemExit::~ItemExit()
 {}
@@ -33,12 +35,14 @@ void ItemExit::start()
 
 void ItemExit::onClick()
 {
-	cout << "끝내기 메뉴 아이템 " << endl;
+	Application::quit();
 }
 
 ////////////////Main 메뉴 아이템////////////////////
 ItemMain::ItemMain(float px, float py) : Button(px, py)
-{}
+{
+	setActive(false);
+}
 
 ItemMain::~ItemMain()
 {}
@@ -55,7 +59,9 @@ void ItemMain::onClick()
 
 ////////////////Restart 메뉴 아이템////////////////////
 ItemRestart::ItemRestart(float px, float py) : Button(px, py)
-{}
+{
+	setActive(false);
+}
 
 ItemRestart::~ItemRestart()
 {}
@@ -72,7 +78,9 @@ void ItemRestart::onClick()
 
 ////////////////Resume 메뉴 아이템////////////////////
 ItemResume::ItemResume(float px, float py) : Button(px, py)
-{}
+{
+	setActive(false);
+}
 
 ItemResume::~ItemResume()
 {}
@@ -84,5 +92,7 @@ void ItemResume::start()
 
 void ItemResume::onClick()
 {
-	cout << "정지해제..다시하기 메뉴 아이템 " << endl;
+	//일시정지 재개하기
+	GameManager::setIsPause(false);
+	Time::timeScale = 1.0;
 }

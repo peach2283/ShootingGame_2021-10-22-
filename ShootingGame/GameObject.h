@@ -88,7 +88,7 @@ public:
 	virtual void onDestroy();
 
 	//객체 생성 및 제거함수
-	void instantiate(GameObject* o, int layer=0);
+	GameObject * instantiate(GameObject* o, int layer=0);
 	void destroy(GameObject* o);
 	void destroy(GameObject* o, float lifeTime);
 
