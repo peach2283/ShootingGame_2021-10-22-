@@ -15,6 +15,9 @@ private:
 	//플레이어 갯수 아이콘..포인터 저장 배열
 	GameObject* playerIcon[3];
 
+	//폭탄 갯수 아이콘...포인터 저장 배열
+	GameObject* bombIcon[5];
+
 public:
 	UIManager();
 	~UIManager();

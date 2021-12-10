@@ -14,8 +14,6 @@ private:
 	float fireDelay; //발사간 지연 시간
 	
 	int   fireCount; //레이저 발사갯수
-	int   bombCount; //남은 폭탄 갯수
-
 	State state;
 
 public:
@@ -29,6 +27,5 @@ public:
 	void fire();  //발사 함수
 
 	void onTrigger(GameObject* other);
-
 	void damage(float amount);
 };

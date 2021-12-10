@@ -19,6 +19,12 @@ void UIManager::start()
     playerIcon[0] = instantiate(new PlayerIcon(220   , 5), 9);
     playerIcon[1] = instantiate(new PlayerIcon(220+40, 5), 9);
     playerIcon[2] = instantiate(new PlayerIcon(220+80, 5), 9);
+
+    bombIcon[0] = instantiate(new BombIcon(10    , 720), 9);
+    bombIcon[1] = instantiate(new BombIcon(10+30 , 720), 9);
+    bombIcon[2] = instantiate(new BombIcon(10+60 , 720), 9);
+    bombIcon[3] = instantiate(new BombIcon(10+90 , 720), 9);
+    bombIcon[4] = instantiate(new BombIcon(10+120, 720), 9);
 }
 
 void UIManager::update()
@@ -52,6 +58,20 @@ void UIManager::update()
         }
         else {
             playerIcon[i]->setActive(false);
+        }
+    }
+
+    //ÆøÅº°¹¼ö¸¦ UI¿¡ Àû¿ëÇÏ±â//
+    int bombCount = GameManager::getBombCount();
+
+    for (int i = 0; i < 5; i++)
+    {
+        if (i < bombCount)
+        {
+            bombIcon[i]->setActive(true);
+        }
+        else {
+            bombIcon[i]->setActive(false);
         }
     }
 }

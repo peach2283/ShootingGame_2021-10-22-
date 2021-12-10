@@ -22,6 +22,9 @@ private:
 	//ÇÃ·¹ÀÌ¾î Ã¼·Â
 	static float hp;   
 
+	//³²Àº ÆøÅº °¹¼ö
+	static int bombCount; 
+
 public:
 
 	static void addEnemySpawnCount();
@@ -42,4 +45,8 @@ public:
 	static float getHP();
 
 	static int getPlayerCount();
+
+	static int  getBombCount();
+	static void subBombCount();
+	static void addBombCount();
 };
