@@ -25,6 +25,8 @@ public:
 
 	void start();
 	void draw();
+
+	void setFillAmount(float fillAmount);
 };
 
 //체력바 배경 클랙스//

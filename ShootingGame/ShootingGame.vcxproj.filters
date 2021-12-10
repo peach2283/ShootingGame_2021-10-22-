@@ -189,6 +189,9 @@
     <ClInclude Include="PlayerHp.h">
       <Filter>헤더 파일\UI</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerIcon.h">
+      <Filter>헤더 파일\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp">
@@ -324,6 +327,9 @@
       <Filter>소스 파일\UI</Filter>
     </ClCompile>
     <ClCompile Include="PlayerHp.cpp">
+      <Filter>소스 파일\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerIcon.cpp">
       <Filter>소스 파일\UI</Filter>
     </ClCompile>
   </ItemGroup>

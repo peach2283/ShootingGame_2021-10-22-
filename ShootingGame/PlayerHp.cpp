@@ -15,7 +15,7 @@ void PlayerHp::start()
 }
 
 ////////////체력바 ///////////////////
-HPBar::HPBar(float px, float py) : Sprite("", "", true, px, py)
+HPBar::HPBar(float px, float py) : Sprite("", "체력바", true, px, py)
 {
 	this->fillAmount = 1.0;
 }
@@ -37,6 +37,11 @@ void HPBar::draw()
 	float py = getPy();
 
 	BMP::drawBMP(px, py, &image, fillAmount);
+}
+
+void HPBar::setFillAmount(float fillAmount)
+{
+	this->fillAmount = fillAmount;
 }
 
 /////////체력(바) 배경//////////////////

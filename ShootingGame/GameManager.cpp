@@ -17,7 +17,6 @@ bool GameManager::dropBombItem[MAX_ENEMY]   = { false, false, false, false, fals
 												false, true , false, true , false };
 
 bool GameManager::isPause = false;
-
 float GameManager::hp     = 100;
 
 void GameManager::addEnemySpawnCount()
@@ -48,6 +47,9 @@ void GameManager::reSpawnPlayer()
 	{
 		//플레이어 리스폰하기
 		ObjectManager::instantiate(new Player(WIDTH / 2 - 34, HEIGHT + 50), 1); //플레이어 추가 - 1번 레이어
+
+		//플레이어 체력 복구
+		hp = 100;
 	}
 	else {
 		//게임오버
@@ -83,4 +85,9 @@ void GameManager::damage(float amount)
 float GameManager::getHP()
 {
 	return hp;
+}
+
+int GameManager::getPlayerCount()
+{
+	return playerCount;
 }

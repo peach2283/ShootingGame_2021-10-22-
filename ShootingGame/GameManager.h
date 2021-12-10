@@ -40,4 +40,6 @@ public:
 
 	static void  damage(float amount);
 	static float getHP();
+
+	static int getPlayerCount();
 };
