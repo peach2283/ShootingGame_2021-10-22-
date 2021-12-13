@@ -4,6 +4,7 @@
 #include "ShootingGame.h"
 
 #include <ft2build.h>  //옵션에 지정된 경로에서...헤더 포함하기
+#include FT_FREETYPE_H //기타 필요한 헤더 포함
 
 #define MAX_LOADSTRING 100
 
@@ -31,12 +32,29 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     cout<<"디버그 콘솔창 시작하기"<<endl;
 
     ////////////////////Freetype 폰트 테스트하기////////////////////////////
+    FT_Library library;
+    FT_Face face;
 
+    if (FT_Init_FreeType(&library) != 0)
+    {
+        cout << "폰트 라이브러리 초기화 실패" << endl;
+    }
 
+    if (FT_New_Face(library, "Asset/Font/Bold.ttf", 0, &face) != 0)
+    {
+        cout << "폰트 파일 로드하기 실패 " << endl;
+    }
 
+    FT_Set_Pixel_Sizes(face, 16, 16);
 
+    char c = 'A';
 
+    int index=FT_Get_Char_Index(face, c);
+    FT_Load_Glyph(face, index, FT_LOAD_DEFAULT);         //로드한 그립은 face->glyph에 저장됨
+    FT_Render_Glyph(face->glyph, FT_RENDER_MODE_NORMAL); //로드한 크립을 화면에 출력가능한 이미지 픽셀 형태로..변경하기
+    
 
+    
     ///////////////////////////////////////////////////////////////////////
 
     // 전역 문자열을 초기화합니다.
