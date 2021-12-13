@@ -3,6 +3,8 @@
 #include "framework.h"
 #include "ShootingGame.h"
 
+#include <ft2build.h>  //옵션에 지정된 경로에서...헤더 포함하기
+
 #define MAX_LOADSTRING 100
 
 // 전역 변수:
@@ -27,6 +29,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     //프로그램 초기화 코드를 추가하시오.
     START_DEBUG_CONSOLE();              //디버그 콘솔창 시작하기
     cout<<"디버그 콘솔창 시작하기"<<endl;
+
+    ////////////////////Freetype 폰트 테스트하기////////////////////////////
+
+
+
+
+
+
+    ///////////////////////////////////////////////////////////////////////
 
     // 전역 문자열을 초기화합니다.
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
