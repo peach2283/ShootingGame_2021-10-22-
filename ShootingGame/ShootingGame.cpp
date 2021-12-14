@@ -45,14 +45,37 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         cout << "폰트 파일 로드하기 실패 " << endl;
     }
 
-    FT_Set_Pixel_Sizes(face, 16, 16);
+    FT_Set_Pixel_Sizes(face, 32, 32);
 
-    char c = 'A';
+    wstring text = L"가나다라";
 
-    int index=FT_Get_Char_Index(face, c);
-    FT_Load_Glyph(face, index, FT_LOAD_DEFAULT);         //로드한 그립은 face->glyph에 저장됨
-    FT_Render_Glyph(face->glyph, FT_RENDER_MODE_NORMAL); //로드한 크립을 화면에 출력가능한 이미지 픽셀 형태로..변경하기
-    
+    for (int i = 0; i < text.length() ; i++)
+    {
+        int index = FT_Get_Char_Index(face, text[i]);
+        FT_Load_Glyph(face, index, FT_LOAD_DEFAULT);         //로드한 그립은 face->glyph에 저장됨
+        FT_Render_Glyph(face->glyph, FT_RENDER_MODE_NORMAL); //로드한 크립을 화면에 출력가능한 이미지 픽셀 형태로..변경하기
+
+        //이미지 변환 저장
+        int width = face->glyph->bitmap.width;  //변환이미지의 가로 크기
+        int height = face->glyph->bitmap.rows;   //변환이미지의 세로 크기
+        unsigned char* buffer = face->glyph->bitmap.buffer;  //변환이미지의 데이타
+
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                unsigned char value = buffer[y * width + x];
+
+                printf("%4d", value);
+            }
+
+            printf("\n");
+        }
+    }
+
+    FT_Done_Face(face);
+    FT_Done_FreeType(library);
+
     ///////////////////////////////////////////////////////////////////////
 
     // 전역 문자열을 초기화합니다.
