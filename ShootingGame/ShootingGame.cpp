@@ -53,8 +53,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     FT_Load_Glyph(face, index, FT_LOAD_DEFAULT);         //로드한 그립은 face->glyph에 저장됨
     FT_Render_Glyph(face->glyph, FT_RENDER_MODE_NORMAL); //로드한 크립을 화면에 출력가능한 이미지 픽셀 형태로..변경하기
     
-
-    
     ///////////////////////////////////////////////////////////////////////
 
     // 전역 문자열을 초기화합니다.

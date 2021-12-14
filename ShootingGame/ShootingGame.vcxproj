@@ -81,8 +81,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\SBS GAME\source\repos\ShootingGame\ShootingGame\freetype;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\SBS GAME\source\repos\ShootingGame\ShootingGame\freetype;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)\freetype;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)\freetype;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
