@@ -197,6 +197,7 @@
     <ClInclude Include="ShootingGame.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Text.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="UIManager.h" />
     <ClInclude Include="Wing.h" />
@@ -246,6 +247,7 @@
     <ClCompile Include="Shield.cpp" />
     <ClCompile Include="ShootingGame.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="Text.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="UIManager.cpp" />
     <ClCompile Include="Wing.cpp" />

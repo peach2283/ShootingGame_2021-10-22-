@@ -25,6 +25,9 @@ void UIManager::start()
     bombIcon[2] = instantiate(new BombIcon(10+60 , 720), 9);
     bombIcon[3] = instantiate(new BombIcon(10+90 , 720), 9);
     bombIcon[4] = instantiate(new BombIcon(10+120, 720), 9);
+
+    //폰트 테스트 하기
+    instantiate(new Text(100, 100 , L"체력 점수", 255, 255, 255, 64), 9);
 }
 
 void UIManager::update()
