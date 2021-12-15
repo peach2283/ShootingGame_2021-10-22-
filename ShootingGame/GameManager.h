@@ -25,6 +25,9 @@ private:
 	//³²Àº ÆøÅº °¹¼ö
 	static int bombCount; 
 
+	//°ÔÀÓ Á¡¼ö
+	static int score;
+
 public:
 
 	static void addEnemySpawnCount();
@@ -49,4 +52,7 @@ public:
 	static int  getBombCount();
 	static void subBombCount();
 	static void addBombCount();
+
+	static void addScore(int point);
+	static int  getScore();
 };

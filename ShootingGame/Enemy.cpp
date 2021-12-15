@@ -189,6 +189,9 @@ void Enemy::explode()
 
 		isItemDropped = true;  //아이템 생성을 했음
 	}
+
+	//게임점수 올리기 
+	GameManager::addScore(20);
 }
 
 void Enemy::onDestroy()

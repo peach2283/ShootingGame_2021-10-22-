@@ -1,7 +1,8 @@
 #include "framework.h"
 #include "ShootingGame.h"
 
-Text::Text(float px, float py, wstring text, unsigned char r, unsigned char g, unsigned char b, int size) : GameObject("","",true, px, py)
+Text::Text(string name, float px, float py, wstring text, unsigned char r, unsigned char g, unsigned char b, int size) 
+    : GameObject("", name ,true, px, py)
 {
     this->r = r;
     this->g = g;
@@ -78,4 +79,9 @@ void Text::draw()
         fontx += face->glyph->advance.x / 64;
         fonty -= face->glyph->advance.y / 64;
     }
+}
+
+void Text::setText(wstring text)
+{
+    this->text = text;
 }

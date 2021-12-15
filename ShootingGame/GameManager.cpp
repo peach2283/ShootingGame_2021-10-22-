@@ -16,9 +16,10 @@ bool GameManager::dropBombItem[MAX_ENEMY]   = { false, false, false, false, fals
 												false, false, false, false, true,
 												false, true , false, true , false };
 
-bool GameManager::isPause  = false;
-float GameManager::hp      = 100;
-int GameManager::bombCount = 3;
+bool  GameManager::isPause   = false;
+float GameManager::hp        = 100;
+int   GameManager::bombCount = 3;
+int   GameManager::score     = 0;
 
 void GameManager::addEnemySpawnCount()
 {
@@ -109,4 +110,14 @@ void GameManager::addBombCount()
 	{
 		bombCount++;
 	}
+}
+
+void GameManager::addScore(int point)
+{
+	score = score + point;
+}
+
+int GameManager::getScore()
+{
+	return score;
 }

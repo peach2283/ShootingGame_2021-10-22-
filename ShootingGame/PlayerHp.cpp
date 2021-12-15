@@ -13,7 +13,7 @@ void PlayerHp::start()
 	addChildObject(new HPBG (0, 0), 9);
 	addChildObject(new HPBar(2, 2), 9);
 
-	addChildObject(new Text(80, 16, L"100", 255, 255, 255, 12), 9);
+	addChildObject(new Text("체력값",80, 16, L"100", 255, 255, 255, 12), 9);
 }
 
 ////////////체력바 ///////////////////
