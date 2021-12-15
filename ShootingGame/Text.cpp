@@ -49,6 +49,10 @@ void Text::draw()
         int height = face->glyph->bitmap.rows;   //변환이미지의 세로 크기
         unsigned char* buffer = face->glyph->bitmap.buffer;  //변환이미지의 데이타
 
+        //폰트 출력 위치 재조정
+        int left = face->glyph->bitmap_left;
+        int top  = face->glyph->bitmap_top;
+
         for (int y = 0; y < height; y++)
         {
             for (int x = 0; x < width; x++)
@@ -57,12 +61,21 @@ void Text::draw()
 
                 if (value != 0)
                 {
-                    setPixel(fontx + x, fonty + y, r, g, b);
+                    //배경색 가져오기
+                    unsigned char br, bg, bb;
+                    getPixel(fontx + x + left, fonty + y - top, br, bg, bb);
+
+                    //폰트색 r,g,b 로 배경색과 알파 블렌딩하기, value가 알파값(투명도값)으로 사용됨
+                    unsigned char R = (value * r + (255 - value) * br) / 255;
+                    unsigned char G = (value * g + (255 - value) * bg) / 255;
+                    unsigned char B = (value * b + (255 - value) * bb) / 255;
+
+                    setPixel(fontx + x + left, fonty + y - top, R, G, B);
                 }              
             }            
         }
 
         fontx += face->glyph->advance.x / 64;
-        fonty += face->glyph->advance.y / 64;
+        fonty -= face->glyph->advance.y / 64;
     }
 }
