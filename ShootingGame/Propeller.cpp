@@ -60,4 +60,7 @@ void Propeller::explode()
 
 	//제거
 	destroy(this);
+
+	//게임점수 획득
+	GameManager::addScore(25);
 }

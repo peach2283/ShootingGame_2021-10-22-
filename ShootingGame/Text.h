@@ -15,7 +15,9 @@ private:
 	int size;
 
 public:
+	Text(float px, float py, wstring text, unsigned char r, unsigned char g, unsigned char b, int size);
 	Text(string name, float px, float py, wstring text, unsigned char r, unsigned char g, unsigned char b, int size);
+
 	~Text();
 
 	void start();

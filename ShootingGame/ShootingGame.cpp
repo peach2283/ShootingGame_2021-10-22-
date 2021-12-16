@@ -45,15 +45,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     Time::init();                            //타이머 초기화
     Random::init();                          //랜덤 초기화
 
-    //게임오브젝트..추가하기//    
-    ObjectManager::instantiate(new GameBG(0, 0));                           //게임배경 추가
-    ObjectManager::instantiate(new Player(WIDTH / 2 - 34, HEIGHT + 50), 1); //플레이어 추가 - 1번 레이어
-
-    //적기스포너
-    ObjectManager::instantiate(new EnemySpawner(WIDTH / 2, 0));
-
-    //UIManager 추가하기//
-    ObjectManager::instantiate(new UIManager());
+    Scene* activeScene = new Scene();
+    activeScene->load();
 
     // 기본 메시지 루프입니다:
     while ( Application::getIsPlaying() == true )
@@ -79,18 +72,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         Time::update();
         Input::update();
 
-        ObjectManager::update();
-        ObjectManager::checkLifeTime();
-        ObjectManager::checkCollision();
-        ObjectManager::clearDeadObject();
-        ObjectManager::draw();
+        activeScene->run();
 
         render();
     }
 
     STOP_DEBUG_CONSOLE();  //디버그 콘솔창 닫기
     exitGraphic();         //그래픽 종료하기
-    ObjectManager::clear(); //매니저 목록에 추가된 객체 모두 삭제하기
+    
+    activeScene->unload();
 
     return (int) msg.wParam;
 }

@@ -15,10 +15,11 @@ void UIManager::start()
 
     popupMenu = instantiate(new PopupMenu((WIDTH - 245) / 2, 200), 9);
 
-    instantiate(new Text("", 5, 35, L"체력", 255, 255, 255, 20), 9);
+    instantiate(new Text(5, 35, L"체력", 255, 255, 255, 20), 9);
     playerHP  = instantiate(new PlayerHp(45, 15), 9);
 
-    instantiate(new Text("", 5, 68, L"점수", 255, 255, 255, 20), 9);
+    instantiate(new Text(5,  68, L"점수", 255, 255, 255, 20), 9);
+    gameScore=instantiate(new Text(50, 68, L"000", 255, 255, 255, 20),  9);
 
     playerIcon[0] = instantiate(new PlayerIcon(230   , 5), 9);
     playerIcon[1] = instantiate(new PlayerIcon(230+40, 5), 9);
@@ -30,8 +31,7 @@ void UIManager::start()
     bombIcon[3] = instantiate(new BombIcon(10+90 , 720), 9);
     bombIcon[4] = instantiate(new BombIcon(10+120, 720), 9);
 
-    //폰트 테스트 하기
-    //instantiate(new Text(100, 100 , L"체력_점수,", 255, 255, 255, 64), 9);
+    instantiate(new Text(300, 785, L"슈팅게임 Ver 1.0", 0, 0, 0, 20), 9);
 }
 
 void UIManager::update()
@@ -95,5 +95,9 @@ void UIManager::update()
 
     //게임 점수를 UI에 적용하기//
     int score = GameManager::getScore();
-    cout << "게임 점수 " << score << endl;
+    
+    WCHAR temp[20];
+    wsprintf(temp, L"%03d", score);
+
+    ((Text*)gameScore)->setText(temp);
 }

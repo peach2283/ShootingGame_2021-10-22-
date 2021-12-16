@@ -18,6 +18,9 @@ private:
 	//폭탄 갯수 아이콘...포인터 저장 배열
 	GameObject* bombIcon[5];
 
+	//점수출력 텍스트 .. 포인터 저장
+	GameObject* gameScore;
+
 public:
 	UIManager();
 	~UIManager();

@@ -1,8 +1,19 @@
 #include "framework.h"
 #include "ShootingGame.h"
 
-Text::Text(string name, float px, float py, wstring text, unsigned char r, unsigned char g, unsigned char b, int size) 
-    : GameObject("", name ,true, px, py)
+Text::Text(float px, float py, wstring text, unsigned char r, unsigned char g, unsigned char b, int size) 
+    : GameObject("", "" ,true, px, py)
+{
+    this->r = r;
+    this->g = g;
+    this->b = b;
+
+    this->text = text;
+    this->size = size;
+}
+
+Text::Text(string name, float px, float py, wstring text, unsigned char r, unsigned char g, unsigned char b, int size)
+    : GameObject("", name, true, px, py)
 {
     this->r = r;
     this->g = g;
@@ -25,7 +36,7 @@ void Text::start()
         cout << "폰트 라이브러리 초기화 실패" << endl;
     }
 
-    if (FT_New_Face(library, "Asset/Font/Bold.ttf", 0, &face) != 0)
+    if (FT_New_Face(library, "Asset/Font/Medium.ttf", 0, &face) != 0)
     {
         cout << "폰트 파일 로드하기 실패 " << endl;
     }
