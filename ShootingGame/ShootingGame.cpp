@@ -45,7 +45,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     Time::init();                            //타이머 초기화
     Random::init();                          //랜덤 초기화
 
-    Scene* activeScene = new Scene();
+    Scene* activeScene = new TitleScene();
     activeScene->load();
 
     // 기본 메시지 루프입니다:

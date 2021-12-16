@@ -9,6 +9,7 @@ Scene::~Scene()
 
 void Scene::load()
 {
+    /****************************
     //게임오브젝트..추가하기//    
     ObjectManager::instantiate(new GameBG(0, 0));                           //게임배경 추가
     ObjectManager::instantiate(new Player(WIDTH / 2 - 34, HEIGHT + 50), 1); //플레이어 추가 - 1번 레이어
@@ -18,6 +19,7 @@ void Scene::load()
 
     //UIManager 추가하기//
     ObjectManager::instantiate(new UIManager());
+    ******************************/
 }
 
 void Scene::run()

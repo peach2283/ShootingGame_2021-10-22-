@@ -7,7 +7,7 @@ public:
 	Scene();
 	~Scene();
 
-	void load();
+	virtual void load();
 	void run();
 	void unload();
 };

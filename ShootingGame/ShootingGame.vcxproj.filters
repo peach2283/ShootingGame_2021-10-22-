@@ -201,6 +201,15 @@
     <ClInclude Include="Scene.h">
       <Filter>헤더 파일\씬</Filter>
     </ClInclude>
+    <ClInclude Include="TitleScene.h">
+      <Filter>헤더 파일\씬</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleBG.h">
+      <Filter>헤더 파일\게임객체</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScene.h">
+      <Filter>헤더 파일\씬</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp">
@@ -348,6 +357,15 @@
       <Filter>소스 파일\UI</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
+      <Filter>소스 파일\씬</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>소스 파일\씬</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleBG.cpp">
+      <Filter>소스 파일\게임객체</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScene.cpp">
       <Filter>소스 파일\씬</Filter>
     </ClCompile>
   </ItemGroup>
