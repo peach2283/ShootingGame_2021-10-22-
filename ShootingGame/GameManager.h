@@ -55,4 +55,6 @@ public:
 
 	static void addScore(int point);
 	static int  getScore();
+
+	static void reset();  //게임메니저 데이타..재초기화 함수
 };

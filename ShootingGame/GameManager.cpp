@@ -21,6 +21,19 @@ float GameManager::hp        = 100;
 int   GameManager::bombCount = 3;
 int   GameManager::score     = 0;
 
+void GameManager::reset()
+{
+	enemySpawnCount   = 0;
+	enemyDestroyCount = 0;
+
+	playerCount = 3;
+	isPause     = false;
+
+	hp		  = 100;
+	bombCount = 3;
+	score     = 0;
+}
+
 void GameManager::addEnemySpawnCount()
 {
 	enemySpawnCount++;  //적기스폰카운트 증가

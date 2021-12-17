@@ -44,10 +44,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     initGraphic(hWnd, 0, 0, WIDTH, HEIGHT);  //그래픽 초기화
     Time::init();                            //타이머 초기화
     Random::init();                          //랜덤 초기화
-
-    Scene* activeScene = new TitleScene();
-    activeScene->load();
-
+    SceneManager::init();
+  
     // 기본 메시지 루프입니다:
     while ( Application::getIsPlaying() == true )
     {
@@ -72,15 +70,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         Time::update();
         Input::update();
 
-        activeScene->run();
+        SceneManager::run();
 
         render();
     }
 
     STOP_DEBUG_CONSOLE();  //디버그 콘솔창 닫기
     exitGraphic();         //그래픽 종료하기
-    
-    activeScene->unload();
+    SceneManager::exit();  
+   
 
     return (int) msg.wParam;
 }

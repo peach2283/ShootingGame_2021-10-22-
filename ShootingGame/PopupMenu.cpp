@@ -54,7 +54,7 @@ void ItemMain::start()
 
 void ItemMain::onClick()
 {
-	cout << "타이틀로가기 메뉴 아이템 " << endl;
+	SceneManager::loadScene("TitleScene");
 }
 
 ////////////////Restart 메뉴 아이템////////////////////
@@ -73,7 +73,7 @@ void ItemRestart::start()
 
 void ItemRestart::onClick()
 {
-	cout << "다시시작 메뉴 아이템 " << endl;
+	SceneManager::loadScene("GameScene");
 }
 
 ////////////////Resume 메뉴 아이템////////////////////

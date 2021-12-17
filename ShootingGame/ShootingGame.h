@@ -52,6 +52,9 @@
 #include "Scene.h"
 #include "TitleScene.h"
 #include "TitleBG.h"
+#include "GameScene.h"
+#include "TitleMenu.h"
+#include "SceneManager.h"
 
 #define WIDTH  480  //게임장면..가로크기
 #define HEIGHT 800  //게임장면..세로크기
