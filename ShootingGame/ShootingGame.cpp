@@ -25,7 +25,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(lpCmdLine);
 
     //프로그램 초기화 코드를 추가하시오.
-    START_DEBUG_CONSOLE();              //디버그 콘솔창 시작하기
+    //START_DEBUG_CONSOLE();              //디버그 콘솔창 시작하기
+
     cout<<"디버그 콘솔창 시작하기"<<endl;
 
     // 전역 문자열을 초기화합니다.
@@ -75,7 +76,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         render();
     }
 
-    STOP_DEBUG_CONSOLE();  //디버그 콘솔창 닫기
+    //STOP_DEBUG_CONSOLE();  //디버그 콘솔창 닫기
+
     exitGraphic();         //그래픽 종료하기
     SceneManager::exit();  
    

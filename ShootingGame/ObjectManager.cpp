@@ -172,7 +172,7 @@ void ObjectManager::draw()
 			if (gameObject[j][i]->getActive() == true) //활성화된 객체만 그림
 			{
 				gameObject[j][i]->draw();          //이미지 그리기
-				gameObject[j][i]->onDrawGizmos();  //기즈모 그리기
+				//gameObject[j][i]->onDrawGizmos();  //기즈모 그리기
 			}
 		}
 	}
